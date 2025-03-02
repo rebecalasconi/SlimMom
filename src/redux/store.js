@@ -1,12 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
-import authReducer from './auth/authReducer';
-import loaderReducer from './loader/loaderReducer';
+import { Provider } from 'react-redux';
+import { combineReducers } from '@reduxjs/toolkit';
 
-const store = configureStore({
-  reducer: {
-    auth: authReducer,
-    loader: loaderReducer,
-  },
+// Un reducer temporar gol — doar pentru ca store-ul să funcționeze
+const rootReducer = combineReducers({
+  placeholder: (state = {}) => state,
 });
 
-export default store;
+const store = configureStore({
+  reducer: rootReducer,
+});
+
+const ReduxProvider = ({ children }) => {
+  return <Provider store={store}>{children}</Provider>;
+};
+
+export default ReduxProvider;

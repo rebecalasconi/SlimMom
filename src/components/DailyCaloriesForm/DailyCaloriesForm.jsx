@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './DailyCaloriesForm.module.css';
+// import styles from './DailyCaloriesForm.module.css';
 
 const DailyCaloriesForm = () => {
   const [formData, setFormData] = useState({
@@ -21,7 +21,7 @@ const DailyCaloriesForm = () => {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <div>
         <label>Height* <input type="number" name="height" required onChange={handleChange} /></label>
         <label>Age* <input type="number" name="age" required onChange={handleChange} /></label>

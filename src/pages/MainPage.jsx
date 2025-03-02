@@ -1,10 +1,10 @@
 import React from 'react';
 import DailyCaloriesForm from '../components/DailyCaloriesForm/DailyCaloriesForm';
-import styles from './MainPage.module.css';
+// import styles from './MainPage.module.css';
 
 const MainPage = () => {
   return (
-    <main className={styles.main}>
+    <main>
       <h1>Calculate your daily calorie intake right now</h1>
       <DailyCaloriesForm />
     </main>

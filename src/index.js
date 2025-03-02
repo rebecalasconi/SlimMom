@@ -2,14 +2,15 @@ import React from 'react';
 
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import ReduxProvider from 'redux/store';
+import ReduxProvider from './redux/store';
 
-import { App } from 'App';
+import App from './App';
 import './index.css';
+// import store from './redux/store';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
-  <BrowserRouter basename="SlimMom">
+  <BrowserRouter>
     <ReduxProvider>
       <App />
     </ReduxProvider>
