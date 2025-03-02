@@ -7,6 +7,7 @@ import MainPage from './pages/MainPage.jsx';
 // import CalculatorPage from './pages/CalculatorPage';
 import Header from './components/Header/Header';
 
+
 const App = () => {
   return (
     <>
