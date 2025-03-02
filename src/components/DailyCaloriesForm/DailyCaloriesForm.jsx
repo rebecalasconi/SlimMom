@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-// import styles from './DailyCaloriesForm.module.css';
+import "./DailyCaloriesForm.css"
+
 
 const DailyCaloriesForm = () => {
   const [formData, setFormData] = useState({
@@ -21,24 +22,36 @@ const DailyCaloriesForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <form onSubmit={handleSubmit} className="form">
+      <div className="column">
         <label>Height* <input type="number" name="height" required onChange={handleChange} /></label>
         <label>Age* <input type="number" name="age" required onChange={handleChange} /></label>
         <label>Current weight* <input type="number" name="currentWeight" required onChange={handleChange} /></label>
       </div>
-      <div>
+
+      <div className="column">
         <label>Desired weight* <input type="number" name="desiredWeight" required onChange={handleChange} /></label>
-        <label>Blood type*
-          <select name="bloodType" onChange={handleChange}>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </select>
-        </label>
+        <label>Blood type*</label>
+        <div className="blood-type-options">
+        <input type="text" className="input-bottom-border" disabled />
+        {['1', '2', '3', '4'].map((type) => (
+          <label key={type} className={`blood-type-label ${formData.bloodType === type ? 'active' : ''}`}>
+            <input        
+            type="radio"
+            name="bloodType"
+            value={type}
+            checked={formData.bloodType === type}
+            onChange={handleChange}
+            />
+          <span className="radio-circle"></span>
+          <span className="blood-type-number">{type}</span>
+    </label>
+  ))}
+</div>
+
       </div>
-      <button type="submit">Start losing weight</button>
+
+      <button className="submit-btn" type="submit">Start losing weight</button>
     </form>
   );
 };

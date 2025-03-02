@@ -1,0 +1,51 @@
+/* Stil pentru fundal */
+.background {
+      z-index: -1;
+}
+
+.background-leaf {
+    background: url('../../assets/images/layer1.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 0;
+    left: 339px;
+    width: 746px;
+    height: 846px;
+  }
+
+  .background-banana {
+    background: url('../../assets/images/layer2.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    width: 773px;
+    height: 552px;
+    top: 0;
+    left: 670px;
+    z-index: -2;
+  }
+  
+  .background-strawberry {
+    background: url('../../assets/images/layer3.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    width: 286px;
+    height: 279px;
+    top: 506px;
+    left: 944px;
+  }
+  
+  .background-gray {
+    background: url('../../assets/images/layer4.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    width: 602px;
+    height: 816px;
+    top: 34px;
+    left: 678px;
+    z-index: -3;
+  }
+  

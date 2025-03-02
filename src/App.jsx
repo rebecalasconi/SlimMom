@@ -10,7 +10,6 @@ import Header from './components/Header/Header';
 const App = () => {
   return (
     <>
-      <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
         {/* <Route path="/login" element={<LoginPage />} />
