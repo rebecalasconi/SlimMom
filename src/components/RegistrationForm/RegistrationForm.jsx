@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './RegistrationForm.css';
+import Header from '../Header/Header';
+import Background from '../Background/Background';
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -59,7 +61,8 @@ const RegistrationForm = () => {
 
   return (
     <div>
-        <Header/>>
+        <Header/>
+        <Background/>
       <h2 className="login-title">REGISTRATION</h2>
       
       {error && <p className="error">{error}</p>}
@@ -95,7 +98,7 @@ const RegistrationForm = () => {
           />
         </label>
 
-        <div>
+        <div className='buttons'>
           <button type="submit" className="login-btn">Register</button>
           <button type="button" className="register-btn" onClick={() => navigate('/login')}>
             Log In

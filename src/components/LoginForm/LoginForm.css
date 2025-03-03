@@ -55,8 +55,14 @@
     border: 2px solid #FC842D; 
   }
 
+.buttons {
+    display: flex;
+    flex-direction: row;
+}
+
  .login-btn, .register-btn {
-    top: 190px;
+    top: 70px;
+    display: inline-block;
     max-width: 181px;
     max-height: 44px;
     margin-right: 20px;
