@@ -5,10 +5,11 @@ const dailyCalorieRouter = require('./src/components/DailyCalorieIntake/DailyCal
 
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://rebecavoicilas:testinggoit@cluster0.n9vph.mongodb.net/', {
+mongoose.connect('mongodb+srv://rebecavoicilas:testinggoit@cluster0.n9vph.mongodb.net/SlimMom', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
 
 mongoose.connection.on('connected', () => {
   console.log('Connected to MongoDB');
@@ -25,4 +26,5 @@ app.use('/dailycalorieintake', dailyCalorieRouter); // Endpoint disponibil la ht
 
 app.listen(5000, () => {
   console.log('Serverul rulează pe http://localhost:5000');
+
 });

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './DailyCaloriesForm.css';
 
 const DailyCaloriesForm = () => {
@@ -12,7 +13,8 @@ const DailyCaloriesForm = () => {
   });
   const [calories, setCalories] = useState(null);
   const [forbiddenFoods, setForbiddenFoods] = useState([]);
-  const [modalOpen, setModalOpen] = useState(false); // State pentru a deschide modalul
+  const [modalOpen, setModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,26 +24,59 @@ const DailyCaloriesForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Presupunem că backend-ul returnează caloriile și alimentele interzise
       const response = await axios.post('http://localhost:5000/dailycalorieintake', formData);
   
       setCalories(response.data.calories);
-      setForbiddenFoods(response.data.forbiddenFoods);
-  
-      // Deschide modalul după ce datele sunt primite
+      setForbiddenFoods(response.data.forbiddenFoods.slice(0, 4));
       setModalOpen(true);
     } catch (error) {
       console.error('Error calculating calories:', error);
     }
   };
 
-  // Funcția pentru a închide modalul
   const closeModal = () => {
     setModalOpen(false);
+    document.body.classList.remove('modal-open');
+  };
+
+  useEffect(() => {
+    if (modalOpen) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+  }, [modalOpen]);
+
+  useEffect(() => {
+    const handleEscKey = (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscKey);
+    return () => {
+      document.removeEventListener('keydown', handleEscKey);
+    };
+  }, []);
+
+  const redirectToLogin = () => {
+    navigate('/login');
+  };
+
+  const handleOverlayClick = (e) => {
+    // Închide modalul doar dacă click-ul a avut loc pe overlay, nu pe conținutul modalului
+    if (e.target === e.currentTarget) {
+      closeModal();
+    }
   };
 
   return (
     <div>
+      {/* Overlay */}
+      {modalOpen && <div className="overlay" onClick={handleOverlayClick}></div>}
+
+      {/* Formularul */}
       <form onSubmit={handleSubmit} className="form">
         <div className="column">
           <label>Height* <input type="number" name="height" required onChange={handleChange} /></label>
@@ -72,20 +107,19 @@ const DailyCaloriesForm = () => {
         <button className="submit-btn" type="submit">Start losing weight</button>
       </form>
 
-      {/* Modalul care arată caloriile și alimentele interzise */}
+      {/* Modalul */}
       {modalOpen && (
-        <div className="modal">
-          <div className="modal-content">
+        <div className="modal" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <span className="close-btn" onClick={closeModal}>&times;</span>
-            <h3>Your Daily Calorie Intake: {calories} calories</h3>
-            <p>Forbidden foods based on your blood type:</p>
+            <h3>Your recommended daily calorie intake is</h3>
+            <p><span className='kcal'>{calories}</span> kcal</p>
+            <hr />
+            <h4>Foods you should not eat</h4>
             <ul>
-              {forbiddenFoods.length > 0 ? (
-                forbiddenFoods.map((food, index) => <li key={index}>{food}</li>)
-              ) : (
-                <li>No forbidden foods found.</li>
-              )}
+              {forbiddenFoods.map((food, index) => <li key={index}>{index + 1}. {food}</li>)}
             </ul>
+            <button className="start-btn" onClick={redirectToLogin}>Start losing weight</button>
           </div>
         </div>
       )}
