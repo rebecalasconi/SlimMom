@@ -82,6 +82,14 @@
   display: none; /* ascunsă în mod implicit */
 }
 
+.submit-btn {
+  min-width: 210px;
+  font-size: 14px;
+  padding: 13px 25px;
+height: 43px;
+
+}
+
 /* Când modalul este deschis, overlay devine vizibil */
 .modal-open .overlay {
   display: block;

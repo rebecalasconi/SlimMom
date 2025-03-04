@@ -51,40 +51,47 @@ const ForbiddenFood = require('./ForbiddenFoods');
 
 const getBloodTypeIndex = (bloodType) => parseInt(bloodType);
   
-
 router.post('/', async (req, res) => {
   const { height, age, currentWeight, desiredWeight, bloodType } = req.body;
 
   try {
     const calories = CalculateCalories(currentWeight, height, age, desiredWeight);
 
+    // Obține toate alimentele interzise
     const foodEntries = await ForbiddenFood.find();
     const bloodTypeIndex = getBloodTypeIndex(bloodType);
     
     const forbiddenFoods = foodEntries
-    .filter((food) => {
-            const foodBloodType = food.groupBloodNotAllowed[bloodTypeIndex];
+      .filter((food) => {
+        const foodBloodType = food.groupBloodNotAllowed[bloodTypeIndex];
         return foodBloodType === true;
       })
       .map((food) => food.title);
-  
-      const getRandomFoods = (foods, count) => {
-            const shuffled = foods.sort(() => 0.5 - Math.random()); // Amestecă lista aleatoriu
-            return shuffled.slice(0, count); // Selectează primele 4 alimente
-          };
-      
+
+    // Selectează primele 4 alimente interzise aleatorii
+    const getRandomFoods = (foods, count) => {
+      const shuffled = foods.sort(() => 0.5 - Math.random()); // Amestecă lista aleatoriu
+      return shuffled.slice(0, count); // Selectează primele 4 alimente
+    };
+
     const randomForbiddenFoods = getRandomFoods(forbiddenFoods, 4);
-    
-    // Numerotare alimente interzise
+
+    // Numerotează alimentele interzise
     const numberedFoods = randomForbiddenFoods.map((food, index) => `${index + 1}. ${food}`);
     
-    res.json({ calories, forbiddenFoods: numberedFoods });
+    // Returnează atât forbiddenFoods (alimente aleatorii) cât și allForbiddenFoods (toate alimentele interzise)
+    res.json({ 
+      calories, 
+      forbiddenFoods: numberedFoods, 
+      allForbiddenFoods: forbiddenFoods // Adăugăm toate alimentele interzise în răspuns
+    });
     
-    } catch (error) {
-      console.error('Error calculating calories:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  });
+  } catch (error) {
+    console.error('Error calculating calories:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 
 
 module.exports = router;

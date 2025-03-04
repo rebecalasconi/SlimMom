@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './RightSideBar.css';
 
-const RightSideBar = () => {
+const RightSideBar = ({ dailyRate, consumed, allForbiddenFoods }) => {
   const navigate = useNavigate();
   const userName = localStorage.getItem('userName');
   const caloriesData = JSON.parse(localStorage.getItem('caloriesData')) || {};
-  const { dailyRate = 0, consumed = 0, notRecommendedFoods = [], dateCompleted = '' } = caloriesData;
+  const { dateCompleted = '' } = caloriesData;
 
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -20,14 +20,15 @@ const RightSideBar = () => {
   const kcalLeft = dailyRate - consumed;
   const percentageOfNormal = dailyRate ? ((consumed / dailyRate) * 100).toFixed(1) : 0;
 
-  const filteredFoods = notRecommendedFoods.filter((food) =>
-    food.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Filtrarea alimentelor în funcție de ce introduce utilizatorul în searchTerm
+  const filteredFoods = Array.isArray(allForbiddenFoods) 
+    ? allForbiddenFoods.filter(food => food.toLowerCase().includes(searchTerm.toLowerCase())) 
+    : [];
 
   return (
     <aside className="rightSideBar">
       <div className="userInfo">
-        <span>{userName}</span>
+        <span>{userName} </span>
         <span className="separator">|</span>
         <button onClick={handleSignOut} className="exitButton">
           Exit
@@ -35,29 +36,23 @@ const RightSideBar = () => {
       </div>
 
       <div className="summary">
-        <h3>Summary</h3>
+        <h3>Summary for {dateCompleted}</h3>
+
         <div className="summary-item">
-          <span>Calories Left: </span>
+          <span className="summary-key">Left </span>
           <span>{kcalLeft} kcal</span>
         </div>
         <div className="summary-item">
-          <span>Calories Consumed: </span>
+          <span className="summary-key">Consumed</span>
           <span>{consumed} kcal</span>
         </div>
         <div className="summary-item">
-          <span>Daily Rate: </span>
+          <span className="summary-key">Daily Rate</span>
           <span>{dailyRate} kcal</span>
         </div>
         <div className="summary-item">
-          <span>{percentageOfNormal}% of normal</span>
-        </div>
-
-        <div className="dateCompleted">
-          {dateCompleted ? (
-            <p>{`Data completării: ${dateCompleted}`}</p>
-          ) : (
-            <p>No data completed yet</p>
-          )}
+          <span className="summary-key">n% of normal</span>
+          <span>{percentageOfNormal}</span>
         </div>
       </div>
 

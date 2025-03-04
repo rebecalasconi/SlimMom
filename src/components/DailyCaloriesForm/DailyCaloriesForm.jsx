@@ -163,15 +163,25 @@ const DailyCaloriesForm = () => {
       const response = await axios.post('http://localhost:5000/dailycalorieintake', formData);
       setCalories(response.data.calories);
       setForbiddenFoods(response.data.forbiddenFoods);
-      setAllForbiddenFoods(response.data.allForbiddenFoods); // Toate alimentele interzise
+  
+      // Salvează allForbiddenFoods
+      const allForbiddenFoods = response.data.allForbiddenFoods || [];
+      const currentDate = new Date().toLocaleDateString('ro-RO', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }).replace(/\//g, '.'); // Înlocuiește slash cu punct
+      
 
   
-      // Salvăm datele în localStorage pentru recalculare corectă
+      // Salvăm datele în localStorage
       localStorage.setItem('calorieFormData', JSON.stringify(formData));
       localStorage.setItem('caloriesData', JSON.stringify({
         dailyRate: response.data.calories,
         consumed: 0,
-        notRecommendedFoods: response.data.allForbiddenFoods,
+        forbiddenFoods: response.data.forbiddenFoods,
+        allForbiddenFoods: allForbiddenFoods, // Include allForbiddenFoods
+        dateCompleted: currentDate,
       }));
   
       setModalOpen(true); // Deschidem modal doar după ce primim răspunsul

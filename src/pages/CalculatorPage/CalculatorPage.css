@@ -1,12 +1,25 @@
 .container {
     display: flex;
     max-width: 1280px;
+    height: 557px;
     align-content: space-between;
+    margin-top: 145px;
   }
   
   .leftPanel {
     width: 763px;
-    height: 850px;
+    height: 557px;
+  }
+
+  .leftPanel h1 {
+    max-width: 608px;
+    font-family: Verdana;
+font-weight: 700;
+font-size: 34px;
+line-height: 47.6px;
+letter-spacing: 0%;
+margin-left: 16px;
+margin-bottom: 68px;
   }
   
   .rightPanel{
@@ -16,6 +29,9 @@ height: 850px;
 
   .leftPanel form {
     max-width: 608px;
+    height: 700px;
   }
+
+  
   
   
