@@ -8,6 +8,8 @@ import RegistrationForm from './components/RegistrationForm/RegistrationForm.jsx
 // import DiaryPage from './pages/DiaryPage';
 // import CalculatorPage from './pages/CalculatorPage';
 import Header from './components/Header/Header';
+import CalculatorPage from './pages/CalculatorPage/CalculatorPage.jsx';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx';
 
 
 const App = () => {
@@ -17,6 +19,13 @@ const App = () => {
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegistrationForm />} />
+        <Route
+          path="/diary"
+          element={
+            <PrivateRoute>
+              <CalculatorPage />
+            </PrivateRoute>
+          }></Route>
         {/* <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegistrationPage />} />
         <Route path="/diary" element={<DiaryPage />} />

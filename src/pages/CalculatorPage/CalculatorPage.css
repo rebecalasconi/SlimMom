@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    max-width: 1280px;
+    align-content: space-between;
+  }
+  
+  .leftPanel {
+    width: 763px;
+    height: 850px;
+  }
+  
+  .rightPanel{
+    max-width: 517px;
+height: 850px;
+  }
+  
+  

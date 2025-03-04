@@ -56,8 +56,7 @@
   }
 
 .buttons {
-    display: flex;
-    flex-direction: row;
+    display: inline-block;
 }
 
  .login-btn, .register-btn {

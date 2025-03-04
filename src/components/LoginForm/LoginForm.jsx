@@ -28,11 +28,13 @@ const LoginForm = ({ setActivePage }) => {
     try {
       // Trimiterea cererii către backend pentru autentificare
       const response = await axios.post('http://localhost:5000/users/login', { email, password });
+      console.log('Răspuns backend:', response.data); // Vezi exact ce primești în răspuns
 
       // Dacă autentificarea a reușit
       if (response.status === 200) {
         // Poți salva token-ul dacă e necesar pentru autentificare pe parcursul navigării
         localStorage.setItem('token', response.data.token);
+        localStorage.setItem('userName', response.data.user.name)
         navigate('/diary'); // Redirecționare către pagina de jurnal
       }
     } catch (err) {

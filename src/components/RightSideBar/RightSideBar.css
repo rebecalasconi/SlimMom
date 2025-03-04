@@ -1,0 +1,62 @@
+/* src/components/RightSideBar.css */
+
+.rightSideBar {
+    width: 517px;
+    padding: 20px;
+    background-color: #d92c2c;
+    height: 850px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .userInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .separator {
+    margin: 0 10px;
+  }
+  
+  .exitButton {
+    background-color: #ff5722;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .summary {
+    margin-bottom: 20px;
+  }
+  
+  .summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .notRecommendedFoods ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .notRecommendedFoods li {
+    margin-bottom: 5px;
+  }
+  .notRecommendedFoods {
+    max-height: 200px; /* Poți ajusta înălțimea după preferințe */
+    overflow-y: auto;
+  }
+  
+  .food-list ul {
+    padding-left: 20px;
+  }
+  
+  .food-list li {
+    list-style-type: disc;
+  }
+  

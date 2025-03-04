@@ -4,6 +4,7 @@ import './MainPage.css';
 import Header from '../components/Header/Header';
 import Background from '../components/Background/Background';
 
+
 const MainPage = () => {
   return (
     <div className="page-container"> {/* Container care dă context pentru z-index */}
