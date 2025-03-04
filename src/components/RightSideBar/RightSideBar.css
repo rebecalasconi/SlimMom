@@ -1,19 +1,16 @@
-/* src/components/RightSideBar.css */
-
 .rightSideBar {
-    width: 517px;
+    background-color: #F0F1F3;
+    width: 400px;
     padding: 20px;
-    background-color: #d92c2c;
-    height: 850px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    position: relative;
   }
   
   .userInfo {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    margin-bottom: 20px;
+    font-family: Verdana, sans-serif;
   }
   
   .separator {
@@ -21,42 +18,74 @@
   }
   
   .exitButton {
-    background-color: #ff5722;
+    background: none;
     border: none;
-    color: white;
-    padding: 8px 16px;
+    color: #007BFF;
     cursor: pointer;
-    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  .exitButton:hover {
+    text-decoration: underline;
   }
   
   .summary {
-    margin-bottom: 20px;
+    margin-top: 20px;
+    max-width: 288px;
+    margin: auto;
   }
   
   .summary-item {
+    font-family: Verdana, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17.01px;
+    letter-spacing: 4%;
+    color: #9B9FAA;
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
   }
   
-  .notRecommendedFoods ul {
-    list-style-type: none;
-    padding: 0;
+  .dateCompleted {
+    font-family: Verdana, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17.01px;
+    letter-spacing: 4%;
+    margin-bottom: 20px;
+    text-align: center;
   }
   
-  .notRecommendedFoods li {
-    margin-bottom: 5px;
-  }
   .notRecommendedFoods {
-    max-height: 200px; /* Poți ajusta înălțimea după preferințe */
+    margin-top: 20px;
+    max-width: 288px;
+    margin: auto;
+  }
+  
+  .searchInput {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  
+  .food-list {
+    max-height: 300px;
     overflow-y: auto;
+    margin-top: 10px;
   }
   
-  .food-list ul {
-    padding-left: 20px;
-  }
-  
-  .food-list li {
-    list-style-type: disc;
+  .food-item {
+    font-family: Verdana, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17.01px;
+    letter-spacing: 4%;
+    color: #9B9FAA;
+    margin-bottom: 5px;
   }
   

@@ -171,7 +171,7 @@ const DailyCaloriesForm = () => {
       localStorage.setItem('caloriesData', JSON.stringify({
         dailyRate: response.data.calories,
         consumed: 0,
-        notRecommendedFoods: response.data.forbiddenFoods,
+        notRecommendedFoods: response.data.allForbiddenFoods,
       }));
   
       setModalOpen(true); // Deschidem modal doar după ce primim răspunsul
@@ -236,7 +236,7 @@ const DailyCaloriesForm = () => {
             <hr />
             <h4>Foods you should not eat</h4>
             <ul>
-               {forbiddenFoods.map((food, index) => <li key={index}>{index + 1}. {food}</li>)}
+               {forbiddenFoods.map((food, index) => <li key={index}> {food}</li>)}
             </ul>
             <button className="start-btn" onClick={redirectToLogin}>Start losing weight</button>
           </div>
