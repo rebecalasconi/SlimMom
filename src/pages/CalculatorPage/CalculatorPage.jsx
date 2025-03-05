@@ -10,25 +10,29 @@ const CalculatorPage = () => {
     age: '',
     currentWeight: '',
     desiredWeight: '',
-    bloodType: '',
+    bloodType: '1',
   });
 
   const [dailyRate, setDailyRate] = useState(0);
   const [consumed, setConsumed] = useState(0);
   const [notRecommendedFoods, setNotRecommendedFoods] = useState([]);
-  const [forbiddenFoods, setForbiddenFoods] = useState([]);  // Adăugăm state pentru forbiddenFoods
-  const [allForbiddenFoods, setAllForbiddenFoods] = useState([]);  // Adăugăm state pentru allForbiddenFoods
+  const [forbiddenFoods, setForbiddenFoods] = useState([]);
+  const [allForbiddenFoods, setAllForbiddenFoods] = useState([]);
+  
 
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem('caloriesData'));
-    // console.log(notRecommendedFoods)
-    // console.log(forbiddenFoods)
-    // console.log(allForbiddenFoods)
+    const storedFormData = JSON.parse(localStorage.getItem('calorieFormData'));
+
     if (storedData) {
-      setDailyRate(storedData.dailyRate || 0);  // Setează dailyRate
-      setConsumed(storedData.consumed || 0);  // Setează consumed
-      setForbiddenFoods(storedData.forbiddenFoods || []);  // Setează forbiddenFoods
-      setAllForbiddenFoods(storedData.allForbiddenFoods || []);  // Setează allForbiddenFoods
+      setDailyRate(storedData.dailyRate || 0);
+      setConsumed(storedData.consumed || 0);
+      setForbiddenFoods(storedData.forbiddenFoods || []);
+      setAllForbiddenFoods(storedData.allForbiddenFoods || []);
+    }
+
+    if (storedFormData) {
+      setUserData(storedFormData);
     }
   }, []);
 
@@ -37,15 +41,15 @@ const CalculatorPage = () => {
       <Header />
       <div className="container">
         <div className="leftPanel">
-            <h1>Calculate your daily calorie intake right now</h1>
+          <h1>Calculate your daily calorie intake right now</h1>
           <DailyCaloriesForm initialValues={userData} />
         </div>
         <div className="rightPanel">
           <RightSideBar
             dailyRate={dailyRate}
             consumed={consumed}
-            forbiddenFoods={forbiddenFoods}  // Transmite forbiddenFoods
-            allForbiddenFoods={allForbiddenFoods}  // Transmite allForbiddenFoods
+            forbiddenFoods={forbiddenFoods}
+            allForbiddenFoods={allForbiddenFoods}
           />
         </div>
       </div>

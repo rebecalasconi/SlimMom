@@ -10,6 +10,7 @@ import RegistrationForm from './components/RegistrationForm/RegistrationForm.jsx
 import Header from './components/Header/Header';
 import CalculatorPage from './pages/CalculatorPage/CalculatorPage.jsx';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx';
+import DiaryPage from './pages/DiaryPage/DiaryPage.jsx'
 
 
 const App = () => {
@@ -20,10 +21,17 @@ const App = () => {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegistrationForm />} />
         <Route
-          path="/diary"
+          path="/calculator"
           element={
             <PrivateRoute>
               <CalculatorPage />
+            </PrivateRoute>
+          }></Route>
+                  <Route
+          path="/diary"
+          element={
+            <PrivateRoute>
+              <DiaryPage />
             </PrivateRoute>
           }></Route>
         {/* <Route path="/login" element={<LoginPage />} />

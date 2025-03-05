@@ -1,16 +1,27 @@
 .rightSideBar {
-    background: 
-    linear-gradient(to bottom, #F0F1F3, #F0F1F3); /* fundal gri */
+    position: relative;
     width: 517px;
     height: 850px;
     padding: 0 97px;
     box-sizing: border-box;
-    background-position: 20px right;
-    position: relative;
-    background: url('../../assets/images/layer1.png') no-repeat center center;
-    background-size: 170%;
-    top: -305px;
+    background: linear-gradient(to bottom, #F0F1F3, #F0F1F3); /* fundal gri */
+    overflow: hidden; /* ascunde partea din imagine care depășește */
+    top: -305px; 
   }
+  
+  .rightSideBar::before {
+    content: "";
+    position: absolute;
+    top: -190px; 
+    left: -80px; /* mută imaginea spre stânga */
+    width: 170%; /* mărește imaginea */
+    height: 170%;
+    background: url('../../assets/images/layer1.png') no-repeat center center;
+    background-size: contain; 
+    z-index: 1; /* imaginea peste fundal, dar sub conținut */
+    pointer-events: none; /* nu afectează clickurile */
+  }
+  
   
   .userInfo {
     display: flex;

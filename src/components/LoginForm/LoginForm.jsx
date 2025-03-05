@@ -35,7 +35,7 @@ const LoginForm = ({ setActivePage }) => {
         // Poți salva token-ul dacă e necesar pentru autentificare pe parcursul navigării
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('userName', response.data.user.name)
-        navigate('/diary'); // Redirecționare către pagina de jurnal
+        navigate('/calculator'); // Redirecționare către pagina de jurnal
       }
     } catch (err) {
       const errorMessage = err.response?.data?.message || 'Eroare la autentificare.';
