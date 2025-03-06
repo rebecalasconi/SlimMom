@@ -9,6 +9,5 @@ const forbiddenFoodSchema = new mongoose.Schema({
 });
 
 const ForbiddenFood = mongoose.model('ForbiddenFood', forbiddenFoodSchema, 'SlimMom'); // Specifică numele colecției
-
 module.exports = ForbiddenFood;
 

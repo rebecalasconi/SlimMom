@@ -87,3 +87,135 @@
   .gramsInput {
     max-width: 105px;
   }
+  
+  /* import React, { useState, useEffect } from 'react';
+import './DiaryAddProductForm.css';
+import axios from 'axios';
+// const ForbiddenFood = require('../DailyCalorieIntake/ForbiddenFoods');
+
+// const foodEntries = await ForbiddenFood.find();
+// const forbiddenData = foodEntries
+// .map((food) => food);
+// console.log('dta',forbiddenData)
+
+const DiaryAddProductForm = ({ addProductToList, allForbiddenFoods, selectedDate, updateCalories }) => {
+  const [productName, setProductName] = useState('');
+  const [grams, setGrams] = useState('');
+  const [selectedFood, setSelectedFood] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredForbiddenFoods, setFilteredForbiddenFoods] = useState([]);
+  const [productList, setProductList] = useState([]);
+
+  const [allFoods, setAllFoods] = useState([]);
+  const [filteredFoods, setFilteredFoods] = useState([]);
+
+  useEffect(() => {
+    const fetchForbiddenFoods = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/dailycalorieintake/forbiddenFoods');
+        setAllFoods(response.data); // Salvează obiectele complete în state
+      } catch (error) {
+        console.error('Error fetching forbidden foods:', error);
+      }
+    };
+    fetchForbiddenFoods();
+  }, []);
+
+  useEffect(() => {
+    const filtered = allFoods.filter((food) =>
+        food.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredFoods(filtered);
+    }, [searchTerm, allFoods]);
+
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Verificăm dacă există produsul selectat și gramajul
+    if (!grams || !selectedFood) return;
+
+    // Calculăm caloriile pentru produsul introdus
+    const calories = (selectedFood.calories * grams) / 100;
+
+    // Creăm obiectul pentru produsul nou
+    const newProduct = {
+      id: Date.now(), // Creăm un ID unic folosind timestamp
+      date: selectedDate,
+      name: selectedFood,
+      grams,
+      calories: Math.round(calories),
+    };
+
+    // Adăugăm produsul în lista locală
+    setProductList((prevList) => [...prevList, newProduct]);
+
+    // Trimit produsul adăugat către funcția părinte
+    addProductToList(newProduct);
+
+    // Actualizăm caloriile
+    updateCalories(Math.round(calories));
+
+    // Resetăm formularul
+    setProductName('');
+    setGrams('');
+    setSelectedFood(null);
+    setSearchTerm('');
+  };
+
+  const handleFoodSelect = (food) => {
+    setProductName(food);
+    setSelectedFood(food);
+    setSearchTerm(food);
+    setFilteredForbiddenFoods([]); // Resetează lista de sugestii după selecția unui produs
+  };
+
+  const handleRemoveProduct = (id, calories) => {
+    // Eliminăm produsul din lista locală
+    setProductList((prevList) => prevList.filter((product) => product.id !== id));
+    // Reducem caloriile
+    updateCalories(-calories);
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit} className="productForm">
+        <div className={`searchForbiddenFoods ${searchTerm && filteredForbiddenFoods.length > 0 ? 'active' : ''}`}>
+          <input
+            type="text"
+            placeholder="Enter product name..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="searchInput"
+          />
+          <ul className="searchResults">
+            {filteredForbiddenFoods.map((food) => (
+              <li key={food._id} onClick={() => handleFoodSelect(food)}>
+                  {food.title} - {food.calories} kcal/100g</li>
+            ))}
+          </ul>
+        </div>
+        <input
+          type="number"
+          placeholder="Grams"
+          value={grams}
+          onChange={(e) => setGrams(e.target.value)}
+          className="gramsInput"
+          required
+        />
+        <button type="submit" className="addButton">+</button>
+      </form>
+
+ <ul className="searchResults">
+//             {filteredFoods.map((food) => (
+//               <li key={food._id} onClick={() => handleFoodSelect(food)}>
+//                 {food.title} - {food.calories} kcal/100g
+//               </li>
+//             ))}
+//           </ul>
+    </div>
+  );
+};
+
+export default DiaryAddProductForm; */

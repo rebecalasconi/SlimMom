@@ -15,12 +15,17 @@ const DiaryPage = () => {
     bloodType: '1',
   });
 
+  const [dailyData, setDailyData] = useState(() => {
+    return JSON.parse(localStorage.getItem('dailyData')) || {};
+  });
+  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
   const [dailyRate, setDailyRate] = useState(0);
   const [consumed, setConsumed] = useState(0);
   const [forbiddenFoods, setForbiddenFoods] = useState([]);
   const [allForbiddenFoods, setAllForbiddenFoods] = useState([]);
   const [products, setProducts] = useState([]);
-  const [selectedDate, setSelectedDate] = useState('');
+  const [productList, setProductList] = useState([]);
+//   const [selectedDate, setSelectedDate] = useState('');
   const [isUserSelectedDate, setIsUserSelectedDate] = useState(false); 
 
   useEffect(() => {
@@ -47,15 +52,74 @@ const DiaryPage = () => {
     return `${day}.${month}.${year}`; // Formatul corect: dd.MM.yyyy
   };
   
+  const updateCalories = (calories) => {
+    // Logica pentru actualizarea caloriilor
+    setConsumed(consumed + calories);
+  };
 
-  const handleDateChange = (e) => {
-    setSelectedDate(e.target.value);
+//   const handleDateChange = (e) => {
+//     setSelectedDate(e.target.value);
+//     setIsUserSelectedDate(true);
+//   };
+
+const handleDateChange = (e) => {
+    const newDate = e.target.value;
+    setSelectedDate(newDate);
     setIsUserSelectedDate(true);
+  
+    // Verifică dacă există date salvate pentru noua dată
+    const savedData = JSON.parse(localStorage.getItem('caloriesDataByDate')) || {};
+    const dataForSelectedDate = savedData[newDate] || { products: [], consumed: 0 };
+  
+    setProducts(dataForSelectedDate.products);
+    setConsumed(dataForSelectedDate.consumed);
+  };
+
+  const saveDataForDate = (date, products, consumed) => {
+    const updatedData = {
+      ...dailyData,
+      [date]: { products, consumed },
+    };
+    setDailyData(updatedData);
+    localStorage.setItem('dailyData', JSON.stringify(updatedData));
   };
 
   const addProductToList = (product) => {
-    setProducts([...products, product]);
+    const updatedProducts = [...products, product];
+    const updatedConsumed = consumed + product.calories;
+    setProducts(updatedProducts);
+    setConsumed(updatedConsumed);
+    saveDataForDate(selectedDate, updatedProducts, updatedConsumed);
   };
+
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem('caloriesDataByDate')) || {};
+  
+    savedData[selectedDate] = {
+      products,
+      consumed,
+    };
+  
+    localStorage.setItem('caloriesDataByDate', JSON.stringify(savedData));
+  }, [products, consumed, selectedDate]);
+  
+  const handleRemoveProduct = (id, calories) => {
+    const updatedProducts = products.filter((product) => product.id !== id);
+    const updatedConsumed = consumed - calories;
+    setProducts(updatedProducts);
+    setConsumed(updatedConsumed);
+    saveDataForDate(selectedDate, updatedProducts, updatedConsumed);
+  };
+
+// const addProductToList = (newProduct) => {
+//   setProductList((prevList) => [...prevList, newProduct]);
+// };
+
+useEffect(() => {
+    const dataForSelectedDate = dailyData[selectedDate] || { products: [], consumed: 0 };
+    setProducts(dataForSelectedDate.products);
+    setConsumed(dataForSelectedDate.consumed);
+  }, [selectedDate, dailyData]);
 
   return (
     <>
@@ -78,11 +142,14 @@ const DiaryPage = () => {
           </div>
 
           <DiaryAddProductForm
-            addProductToList={addProductToList}
-            allForbiddenFoods={allForbiddenFoods}
-            selectedDate={selectedDate}
-          />
-          <DiaryProductsList products={products} removeProduct={() => {}} />
+  addProductToList={addProductToList}
+  allForbiddenFoods={allForbiddenFoods}
+  selectedDate={selectedDate}
+  updateCalories={updateCalories}
+  productList={products}
+  removeProduct={handleRemoveProduct} // Asigură-te că este transmis corect în props
+/>
+
         </div>
 
         <div className="rightPanel">
@@ -91,6 +158,7 @@ const DiaryPage = () => {
             consumed={consumed}
             forbiddenFoods={forbiddenFoods}
             allForbiddenFoods={allForbiddenFoods}
+            selectedDate={selectedDate}
           />
         </div>
       </div>

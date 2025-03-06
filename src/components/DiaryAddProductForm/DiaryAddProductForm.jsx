@@ -1,77 +1,217 @@
 import React, { useState, useEffect } from 'react';
 import './DiaryAddProductForm.css';
+import axios from 'axios';
 
-const DiaryAddProductForm = ({ addProductToList, allForbiddenFoods }) => {
-  const [productName, setProductName] = useState('');
+const DiaryAddProductForm = ({
+  addProductToList,
+  allForbiddenFoods,
+  selectedDate,
+  updateCalories,
+  productList,
+  removeProduct,
+}) => {
   const [grams, setGrams] = useState('');
-  const [foodData, setFoodData] = useState([]);
   const [selectedFood, setSelectedFood] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredForbiddenFoods, setFilteredForbiddenFoods] = useState([]);
+  const [allFoods, setAllFoods] = useState([]);
+  const [filteredFoods, setFilteredFoods] = useState([]);
 
   useEffect(() => {
-    if (productName.length > 2) {
-      fetch(`/api/foods?name=${productName}`)
-        .then(response => response.json())
-        .then(data => setFoodData(data))
-        .catch(error => console.error('Error fetching food data:', error));
-    } else {
-      setFoodData([]);
-    }
-  }, [productName]);
+    const fetchForbiddenFoods = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/dailycalorieintake/forbiddenFoods');
+        setAllFoods(response.data);
+      } catch (error) {
+        console.error('Error fetching forbidden foods:', error);
+      }
+    };
+    fetchForbiddenFoods();
+  }, []);
 
   useEffect(() => {
-    setFilteredForbiddenFoods(
-      allForbiddenFoods.filter((food) =>
-        food.toLowerCase().includes(searchTerm.toLowerCase())
+    setFilteredFoods(
+      allFoods.filter((food) =>
+        food.title.toLowerCase().includes(searchTerm.toLowerCase())
       )
     );
-  }, [searchTerm, allForbiddenFoods]);
+  }, [searchTerm, allFoods]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!grams || !selectedFood) return;
+
+    if (!grams || !selectedFood) {
+      console.warn('Please select a food and enter grams.');
+      return;
+    }
 
     const calories = (selectedFood.calories * grams) / 100;
 
-    addProductToList({
+    const newProduct = {
+      id: Date.now(),
+      date: selectedDate,
       name: selectedFood.title,
-      grams,
+      grams: parseInt(grams, 10),
       calories: Math.round(calories),
-    });
+    };
 
-    setProductName('');
+    addProductToList(newProduct); 
+    updateCalories(Math.round(calories));
+
     setGrams('');
     setSelectedFood(null);
+    setSearchTerm('');
+  };
+
+  const handleFoodSelect = (food) => {
+    setSelectedFood(food);
+    setSearchTerm(food.title);
+    setFilteredFoods([]);
+  };
+
+  const handleRemoveProduct = (id, calories) => {
+    removeProduct(id, calories); // actualizează și caloriile
   };
 
   return (
-    <form onSubmit={handleSubmit} className="productForm">
-      
-      <div className={`searchForbiddenFoods ${searchTerm && filteredForbiddenFoods.length > 0 ? 'active' : ''}`}>
+    <div>
+      <form onSubmit={handleSubmit} className="productForm">
+        <div className={`searchForbiddenFoods ${searchTerm && filteredFoods.length > 0 ? 'active' : ''}`}>
+          <input
+            type="text"
+            placeholder="Enter product name..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="searchInput"
+          />
+          <ul className="searchResults">
+            {filteredFoods.map((food) => (
+              <li key={food._id} onClick={() => handleFoodSelect(food)}>
+                {food.title} - {food.calories} kcal/100g
+              </li>
+            ))}
+          </ul>
+        </div>
         <input
-          type="text"
-          placeholder="Search forbidden foods..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="searchInput"
+          type="number"
+          placeholder="Grams"
+          value={grams}
+          onChange={(e) => setGrams(e.target.value)}
+          className="gramsInput"
+          required
         />
-        <ul className="searchResults">
-          {filteredForbiddenFoods.map((food, index) => (
-            <li key={index}>{food}</li>
-          ))}
-        </ul>
-      </div>
-      <input
-        type="number"
-        placeholder="Grams"
-        value={grams}
-        onChange={(e) => setGrams(e.target.value)}
-        className="gramsInput"
-      />
-      
-    </form>
+        <button type="submit" className="addButton">+</button>
+      </form>
+
+      <ul className="productList">
+        {productList.map((product) => (
+          <li key={product.id}>
+            {product.name} - {product.grams}g - {product.calories} kcal
+            <button onClick={() => handleRemoveProduct(product.id, product.calories)} className="removeButton">x</button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
 export default DiaryAddProductForm;
+
+
+
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
+// import './DiaryAddProductForm.css';
+
+// const DiaryAddProductForm = ({ addProductToList, selectedDate, updateCalories }) => {
+//   const [productName, setProductName] = useState('');
+//   const [grams, setGrams] = useState('');
+//   const [selectedFood, setSelectedFood] = useState(null);
+//   const [searchTerm, setSearchTerm] = useState('');
+//   const [allFoods, setAllFoods] = useState([]);
+//   const [filteredFoods, setFilteredFoods] = useState([]);
+
+//   useEffect(() => {
+//     const fetchForbiddenFoods = async () => {
+//       try {
+//         const response = await axios.get('http://localhost:5000/dailycalorieintake/forbiddenFoods');
+//         setAllFoods(response.data); // Salvează obiectele complete în state
+//       } catch (error) {
+//         console.error('Error fetching forbidden foods:', error);
+//       }
+//     };
+//     fetchForbiddenFoods();
+//   }, []);
+
+//   useEffect(() => {
+//     const filtered = allFoods.filter((food) =>
+//       food.title.toLowerCase().includes(searchTerm.toLowerCase())
+//     );
+//     setFilteredFoods(filtered);
+//   }, [searchTerm, allFoods]);
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     if (!grams || !selectedFood) return;
+
+//     const calories = (selectedFood.calories * grams) / 100;
+//     const newProduct = {
+//       id: Date.now(),
+//       date: selectedDate,
+//       name: selectedFood.title,
+//       grams,
+//       calories: Math.round(calories),
+//     };
+
+//     addProductToList(newProduct);
+//     updateCalories(Math.round(calories));
+
+//     setProductName('');
+//     setGrams('');
+//     setSelectedFood(null);
+//     setSearchTerm('');
+//   };
+
+//   const handleFoodSelect = (food) => {
+//     setProductName(food.title);
+//     setSelectedFood(food);
+//     setSearchTerm(food.title);
+//     setFilteredFoods([]);
+//   };
+
+//   return (
+//     <div>
+//       <form onSubmit={handleSubmit} className="productForm">
+//         <div className={`searchForbiddenFoods ${searchTerm && filteredFoods.length > 0 ? 'active' : ''}`}>
+//           <input
+//             type="text"
+//             placeholder="Enter product name..."
+//             value={searchTerm}
+//             onChange={(e) => setSearchTerm(e.target.value)}
+//             className="searchInput"
+//           />
+//           <ul className="searchResults">
+//             {filteredFoods.map((food) => (
+//               <li key={food._id} onClick={() => handleFoodSelect(food)}>
+//                 {food.title} - {food.calories} kcal/100g
+//               </li>
+//             ))}
+//           </ul>
+//         </div>
+//         <input
+//           type="number"
+//           placeholder="Grams"
+//           value={grams}
+//           onChange={(e) => setGrams(e.target.value)}
+//           className="gramsInput"
+//           required
+//         />
+//         <button type="submit" className="submitBtn">
+//           Add product
+//         </button>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default DiaryAddProductForm;
+

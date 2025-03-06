@@ -1,0 +1,103 @@
+import React, { useState, useEffect } from 'react';
+import './DiaryAddProductForm.css';
+
+const DiaryAddProductForm = ({ addProductToList, allFoods, selectedDate, updateCalories }) => {
+  const [productName, setProductName] = useState('');
+  const [grams, setGrams] = useState('');
+  const [foodData, setFoodData] = useState([]);
+  const [selectedFood, setSelectedFood] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [productList, setProductList] = useState([]);
+  const [filteredFoods, setFilteredFoods] = useState([]);
+
+  useEffect(() => {
+    setFilteredFoods(
+      allFoods.filter((food) =>
+        food.title.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
+  }, [searchTerm, allFoods]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!grams || !selectedFood) return;
+
+    const calories = (selectedFood.calories * grams) / 100;
+
+    const newProduct = {
+      id: Date.now(),
+      date: selectedDate,
+      name: selectedFood.title,
+      grams: grams,
+      calories: Math.round(calories),
+    };
+
+    setProductList((prevList) => [...prevList, newProduct]);
+    addProductToList(newProduct);
+    updateCalories(Math.round(calories));
+
+    setProductName('');
+    setGrams('');
+    setSelectedFood(null);
+    setSearchTerm('');
+  };
+
+  const handleFoodSelect = (food) => {
+    setProductName(food.title);
+    setSelectedFood(food);
+    setSearchTerm(food.title);
+    setFilteredFoods([]);
+  };
+
+  const handleRemoveProduct = (id, calories) => {
+    setProductList((prevList) => prevList.filter((product) => product.id !== id));
+    updateCalories(-calories);
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit} className="productForm">
+        <div className={`searchContainer ${searchTerm && filteredFoods.length > 0 ? 'active' : ''}`}>
+          <input
+            type="text"
+            placeholder="Enter product name..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="searchInput"
+            required
+          />
+          <ul className="searchResults">
+            {filteredFoods.map((food) => (
+              <li key={food._id} onClick={() => handleFoodSelect(food)}>
+                {food.title}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <input
+          type="number"
+          placeholder="Grams"
+          value={grams}
+          onChange={(e) => setGrams(e.target.value)}
+          className="gramsInput"
+          required
+          min="1"
+        />
+
+        <button type="submit" className="addButton">+</button>
+      </form>
+
+      <ul className="productList">
+        {productList.map((product) => (
+          <li key={product.id} className="productItem">
+            {product.name} - {product.grams}g - {product.calories} kcal
+            <button onClick={() => handleRemoveProduct(product.id, product.calories)} className="removeButton">x</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default DiaryAddProductForm;

@@ -48,6 +48,7 @@ const express = require('express');
 const router = express.Router();
 const CalculateCalories = require('./CalculateCalories');
 const ForbiddenFood = require('./ForbiddenFoods');
+// const { default: DiaryPage } = require('../../pages/DiaryPage/DiaryPage');
 
 const getBloodTypeIndex = (bloodType) => parseInt(bloodType);
   
@@ -68,6 +69,11 @@ router.post('/', async (req, res) => {
       })
       .map((food) => food.title);
 
+
+      // const forbiddenData = foodEntries
+      // .map((food) => food);
+      // console.log(forbiddenData)
+
     // Selectează primele 4 alimente interzise aleatorii
     const getRandomFoods = (foods, count) => {
       const shuffled = foods.sort(() => 0.5 - Math.random()); // Amestecă lista aleatoriu
@@ -78,6 +84,17 @@ router.post('/', async (req, res) => {
 
     // Numerotează alimentele interzise
     const numberedFoods = randomForbiddenFoods.map((food, index) => `${index + 1}. ${food}`);
+
+    router.get('/forbiddenFoods', async (req, res) => {
+      try {
+        const allFoods = await ForbiddenFood.find();
+        res.json(allFoods); // Trimite toate obiectele complete
+      } catch (error) {
+        console.error('Error fetching forbidden foods:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+      }
+    });
+    
     
     // Returnează atât forbiddenFoods (alimente aleatorii) cât și allForbiddenFoods (toate alimentele interzise)
     res.json({ 
