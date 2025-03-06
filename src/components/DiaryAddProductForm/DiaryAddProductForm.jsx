@@ -73,24 +73,29 @@ const DiaryAddProductForm = ({
   };
 
   return (
-    <div>
+    <div className='containerProductForm'>
       <form onSubmit={handleSubmit} className="productForm">
-        <div className={`searchForbiddenFoods ${searchTerm && filteredFoods.length > 0 ? 'active' : ''}`}>
-          <input
-            type="text"
-            placeholder="Enter product name..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="searchInput"
-          />
-          <ul className="searchResults">
-            {filteredFoods.map((food) => (
-              <li key={food._id} onClick={() => handleFoodSelect(food)}>
-                {food.title} - {food.calories} kcal/100g
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className={`searchForbiddenFoods ${searchTerm && filteredFoods.length > 0 ? 'active' : ''}`}>
+  <input
+    type="text"
+    placeholder="Enter product name"
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+    className="searchInput"
+  />
+  {filteredFoods.length > 0 && (
+    <ul className="searchResults">
+      {filteredFoods
+        .filter((food) => food.title !== selectedFood?.title) // Filtrăm alimentul deja selectat
+        .map((food) => (
+          <li key={food._id} onClick={() => handleFoodSelect(food)}>
+            {food.title} - {food.calories} kcal/100g
+          </li>
+        ))}
+    </ul>
+  )}
+</div>
+
         <input
           type="number"
           placeholder="Grams"
@@ -103,13 +108,30 @@ const DiaryAddProductForm = ({
       </form>
 
       <ul className="productList">
-        {productList.map((product) => (
-          <li key={product.id}>
-            {product.name} - {product.grams}g - {product.calories} kcal
-            <button onClick={() => handleRemoveProduct(product.id, product.calories)} className="removeButton">x</button>
-          </li>
-        ))}
-      </ul>
+  {productList.map((product) => (
+    <li key={product.id} className="productRow">
+      <div className="productColumn nameColumn">
+        {product.name}
+        <div className="line-1"></div>
+      </div>
+      <div className="productColumn gramsColumn">
+        {product.grams}g
+        <div className="line-2"></div>
+      </div>
+      <div className="productColumn kcalColumn">
+        {product.calories} kcal
+        <div className="line-3"></div>
+      </div>
+      <button
+        onClick={() => handleRemoveProduct(product.id, product.calories)}
+        className="removeButton"
+      >
+        x
+      </button>
+    </li>
+  ))}
+</ul>
+
     </div>
   );
 };

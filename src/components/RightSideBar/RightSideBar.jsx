@@ -130,7 +130,7 @@ const RightSideBar = ({ dailyRate, allForbiddenFoods, consumed, selectedDate }) 
         </div>
     
         <div className="summary">
-          <h3>Summary for {selectedDate ? formatDate(selectedDate) : 'N/A'}</h3>
+        <h3>Summary for {selectedDate ? formatDate(selectedDate) : 'N/A'}</h3>
     
           <div className="summary-item">
             <span className="summary-key">Left </span>

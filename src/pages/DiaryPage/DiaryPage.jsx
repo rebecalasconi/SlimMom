@@ -29,23 +29,34 @@ const DiaryPage = () => {
   const [isUserSelectedDate, setIsUserSelectedDate] = useState(false); 
 
   useEffect(() => {
+    // Preia data salvată din localStorage
+    const storedSelectedDate = localStorage.getItem('selectedDate');
+  
+    if (storedSelectedDate) {
+      // Transformă data din formatul dd.MM.yyyy în formatul yyyy-MM-dd
+      const [day, month, year] = storedSelectedDate.split('.');
+      const formattedDate = `${year}-${month}-${day}`;
+      setSelectedDate(formattedDate);  // Setează data formatată
+    } else {
+      const currentDate = new Date().toISOString().split('T')[0];
+      setSelectedDate(currentDate);  // Dacă nu există, folosește data curentă
+    }
+  
     const storedData = JSON.parse(localStorage.getItem('caloriesData'));
-    const storedDate = storedData?.dateCompleted || new Date().toISOString().split('T')[0];
     const storedFormData = JSON.parse(localStorage.getItem('calorieFormData'));
-    setSelectedDate(storedDate);
-
+  
     if (storedData) {
       setDailyRate(storedData.dailyRate || 0);
       setConsumed(storedData.consumed || 0);
       setForbiddenFoods(storedData.forbiddenFoods || []);
       setAllForbiddenFoods(storedData.allForbiddenFoods || []);
-      setSelectedDate(storedData.dateCompleted || new Date().toISOString().split('T')[0]);
     }
-
+  
     if (storedFormData) {
       setUserData(storedFormData);
     }
   }, []);
+  
 
   const formatDate = (dateString) => {
     const [year, month, day] = dateString.split('-');
@@ -66,6 +77,9 @@ const handleDateChange = (e) => {
     const newDate = e.target.value;
     setSelectedDate(newDate);
     setIsUserSelectedDate(true);
+    
+    // Salvează data în localStorage
+    localStorage.setItem('selectedDate', newDate);
   
     // Verifică dacă există date salvate pentru noua dată
     const savedData = JSON.parse(localStorage.getItem('caloriesDataByDate')) || {};
@@ -74,7 +88,7 @@ const handleDateChange = (e) => {
     setProducts(dataForSelectedDate.products);
     setConsumed(dataForSelectedDate.consumed);
   };
-
+  
   const saveDataForDate = (date, products, consumed) => {
     const updatedData = {
       ...dailyData,
