@@ -137,7 +137,7 @@ const DailyCaloriesForm = ({ initialValues }) => {
           </div>
         </div>
 
-        <button className="submit-btn" type="submit">
+        <button className="submit-btn" type="submit" >
           Start losing weight
         </button>
       </form>
