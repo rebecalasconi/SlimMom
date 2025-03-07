@@ -19,6 +19,7 @@ const DiaryPage = () => {
     return JSON.parse(localStorage.getItem('dailyData')) || {};
   });
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
+
   const [dailyRate, setDailyRate] = useState(0);
   const [consumed, setConsumed] = useState(0);
   const [forbiddenFoods, setForbiddenFoods] = useState([]);
@@ -28,26 +29,47 @@ const DiaryPage = () => {
 //   const [selectedDate, setSelectedDate] = useState('');
   const [isUserSelectedDate, setIsUserSelectedDate] = useState(false); 
 
+  const formatDate = (dateString) => {
+    const [year, month, day] = dateString.split('-');
+    return `${day}.${month}.${year}`;
+  };
+
+  const [formattedDate, setFormattedDate] = useState(formatDate(new Date().toISOString().split('T')[0])); // format dd.mm.yyyy
+
+
+  const getUserKey = (key) => {
+    const userName = localStorage.getItem('userName');
+    return userName ? `${userName}_${key}` : key;
+  };
   useEffect(() => {
-    // Preia data salvată din localStorage
-    const storedSelectedDate = localStorage.getItem('selectedDate');
-  
-    if (storedSelectedDate) {
-      // Transformă data din formatul dd.MM.yyyy în formatul yyyy-MM-dd
-      const [day, month, year] = storedSelectedDate.split('.');
-      const formattedDate = `${year}-${month}-${day}`;
-      setSelectedDate(formattedDate);  // Setează data formatată
-    } else {
-      const currentDate = new Date().toISOString().split('T')[0];
-      setSelectedDate(currentDate);  // Dacă nu există, folosește data curentă
+    const userName = localStorage.getItem('userName');
+    if (!userName) {
+      // Dacă nu există user logat, resetează datele
+      setSelectedDate(new Date().toISOString().split('T')[0]);
+      setProducts([]);
+      setConsumed(0);
+      setDailyRate(0);
+      setForbiddenFoods([]);
+      setAllForbiddenFoods([]);
+      return;
     }
+  
+    const storedSelectedDate = localStorage.getItem('selectedDate') || new Date().toISOString().split('T')[0];
+    setSelectedDate(storedSelectedDate); // pentru input
+    setFormattedDate(formatDate(storedSelectedDate)); // pentru afișare
+    
+    const userKey = getUserKey('caloriesDataByDate');
+    const savedData = JSON.parse(localStorage.getItem(userKey)) || {};
+    const dataForSelectedDate = savedData[storedSelectedDate] || { products: [], consumed: 0 };
+    
+    setProducts(dataForSelectedDate.products);
+    setConsumed(dataForSelectedDate.consumed);
   
     const storedData = JSON.parse(localStorage.getItem('caloriesData'));
     const storedFormData = JSON.parse(localStorage.getItem('calorieFormData'));
   
     if (storedData) {
       setDailyRate(storedData.dailyRate || 0);
-      setConsumed(storedData.consumed || 0);
       setForbiddenFoods(storedData.forbiddenFoods || []);
       setAllForbiddenFoods(storedData.allForbiddenFoods || []);
     }
@@ -56,12 +78,6 @@ const DiaryPage = () => {
       setUserData(storedFormData);
     }
   }, []);
-  
-
-  const formatDate = (dateString) => {
-    const [year, month, day] = dateString.split('-');
-    return `${day}.${month}.${year}`; // Formatul corect: dd.MM.yyyy
-  };
   
   const updateCalories = (calories) => {
     // Logica pentru actualizarea caloriilor
@@ -73,29 +89,37 @@ const DiaryPage = () => {
 //     setIsUserSelectedDate(true);
 //   };
 
-const handleDateChange = (e) => {
+  
+  const handleDateChange = (e) => {
     const newDate = e.target.value;
-    setSelectedDate(newDate);
+    setSelectedDate(newDate); // pentru input (yyyy-mm-dd)
+    setFormattedDate(formatDate(newDate)); // pentru afișare (dd.mm.yyyy)
     setIsUserSelectedDate(true);
     
-    // Salvează data în localStorage
+    // Salvează în localStorage
     localStorage.setItem('selectedDate', newDate);
-  
-    // Verifică dacă există date salvate pentru noua dată
-    const savedData = JSON.parse(localStorage.getItem('caloriesDataByDate')) || {};
+    
+    // Actualizează datele pentru ziua selectată
+    const userKey = getUserKey('caloriesDataByDate');
+    const savedData = JSON.parse(localStorage.getItem(userKey)) || {};
     const dataForSelectedDate = savedData[newDate] || { products: [], consumed: 0 };
-  
+    
     setProducts(dataForSelectedDate.products);
     setConsumed(dataForSelectedDate.consumed);
   };
   
+  
   const saveDataForDate = (date, products, consumed) => {
+    const userKey = getUserKey('caloriesDataByDate');
+    const existingData = JSON.parse(localStorage.getItem(userKey)) || {};
+    
     const updatedData = {
-      ...dailyData,
+      ...existingData,
       [date]: { products, consumed },
     };
-    setDailyData(updatedData);
-    localStorage.setItem('dailyData', JSON.stringify(updatedData));
+    // setDailyData(updatedData);
+    // localStorage.setItem('dailyData', JSON.stringify(updatedData));
+    localStorage.setItem(userKey, JSON.stringify(updatedData));
   };
 
   const addProductToList = (product) => {
@@ -130,10 +154,14 @@ const handleDateChange = (e) => {
 // };
 
 useEffect(() => {
-    const dataForSelectedDate = dailyData[selectedDate] || { products: [], consumed: 0 };
+    const userKey = getUserKey('caloriesDataByDate');
+    const savedData = JSON.parse(localStorage.getItem(userKey)) || {};
+    
+    const dataForSelectedDate = savedData[selectedDate] || { products: [], consumed: 0 };
+    
     setProducts(dataForSelectedDate.products);
     setConsumed(dataForSelectedDate.consumed);
-  }, [selectedDate, dailyData]);
+  }, [selectedDate]);
 
   return (
     <>
@@ -142,7 +170,7 @@ useEffect(() => {
         <div className="leftPanel">
           <div className="datePickerContainer">
           <p className="selectedDate">
-          {isUserSelectedDate ? formatDate(selectedDate) : selectedDate}</p>
+          {formatDate(selectedDate)}</p>
             <label htmlFor="date" className="calendarLabel">
               📅
             </label>

@@ -98,10 +98,20 @@ const RightSideBar = ({ dailyRate, allForbiddenFoods, consumed, selectedDate }) 
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSignOut = () => {
+    // Ștergem doar datele specifice userului logat
+    const userName = localStorage.getItem('userName');
+    if (userName) {
+      localStorage.removeItem(`${userName}_caloriesDataByDate`);
+    }
+  
+    // Ștergem token-ul, userName și selectedDate
     localStorage.removeItem('token');
     localStorage.removeItem('userName');
+    localStorage.removeItem('selectedDate');
+  
     navigate('/');
   };
+  
 
   const updateCalories = (calories) => {
     // Logica pentru actualizarea caloriilor
