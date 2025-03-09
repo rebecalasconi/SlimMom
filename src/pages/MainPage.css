@@ -104,7 +104,6 @@ form {
 }
 
 @media (max-width: 768px) {
-
   .main h1 {
     font-size: 18px;
     min-width: 280px;
@@ -127,7 +126,8 @@ form {
     max-width: 704px;
     width: 100%;
     height: 718px;
-    margin: 0 auto;
+    margin: 0;
+    margin-right: -30px;
   }
 
 }

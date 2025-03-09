@@ -69,7 +69,8 @@ const DailyCaloriesForm = ({ initialValues }) => {
 
   return (
     <div>
-      {modalOpen && <div className="overlay" onClick={closeModal}></div>}
+      {modalOpen && <div className="overlay" onClick={closeModal}>
+    </div>}
 
       <form onSubmit={handleSubmit} className="form">
         <div className="column">
@@ -144,13 +145,14 @@ const DailyCaloriesForm = ({ initialValues }) => {
 
       {modalOpen && (
         <div className="modal" onClick={closeModal}>
+          <button className="close-btn" onClick={closeModal}>&times;</button>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <span className="close-btn" onClick={closeModal}>&times;</span>
+            <button onClick={closeModal} className="modal-btn">🠔</button>
             <h3>Your recommended daily calorie intake is</h3>
             <p><span className='kcal'>{calories}</span> kcal</p>
             <hr />
             <h4>Foods you should not eat</h4>
-            <ul>
+            <ul className='modal-list'>
               {forbiddenFoods.map((food, index) => <li key={index}>{food}</li>)}
             </ul>
             <button className="start-btn" onClick={redirectToLogin}>
