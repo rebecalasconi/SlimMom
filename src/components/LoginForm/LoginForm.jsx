@@ -43,9 +43,8 @@ const LoginForm = ({ setActivePage }) => {
   };
 
   return (
-    <div>    
-      <Header />
-      <Background />
+    <div className='login-container'>    
+      <Header /> 
       <div className="login-form">
         <h2 className="login-title">LOG IN</h2>
         {error && <p className="error">{error}</p>}
@@ -64,6 +63,9 @@ const LoginForm = ({ setActivePage }) => {
           </div>
         </form>
       </div>
+      <div className="login-background">
+      <Background/>
+      </div> 
     </div>
   );
 };
