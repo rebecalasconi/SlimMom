@@ -1,0 +1,21 @@
+/* MOBIL (320px - 768px)
+@media (max-width: 768px) {
+    .product-item {
+        position: absolute;
+    }
+    .close-btn {
+        position: absolute;
+        top: -120px;
+        left: -700px;
+    }
+
+    .close-btn::before {
+        content: "🠔";
+        font-weight: 700;
+        font-size: 30px;
+        background-color: #EFF1F3;
+        min-width: 320px;
+        padding: 20px 660px;
+    }
+} */
+

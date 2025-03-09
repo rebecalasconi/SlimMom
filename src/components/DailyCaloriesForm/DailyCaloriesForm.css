@@ -4,6 +4,10 @@
     width: 240px;
     flex-wrap: wrap;
   }
+
+  .form {
+    max-width: 608px;
+}
   
   .blood-type-label {
     display: flex;
@@ -69,18 +73,18 @@
 /* DailyCaloriesForm.css */
 /* Modal */
 
-/* Overlay */
-.overlay {
+/* Overlay */.overlay {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 50%;  /* Plasează elementul la 50% de la marginea de sus */
+  left: 50%; /* Plasează elementul la 50% de la marginea din stânga */
+  transform: translate(-50%, -50%); /* Mișcă elementul înapoi pentru a-l centra */
   width: 100%;
   height: 100%;
-  background: #2121211F;
- /* gri deschis */
+  background: #2121211F; /* gri deschis */
   z-index: 999; /* asigură-te că este sub modal */
   display: none; /* ascunsă în mod implicit */
 }
+
 
 .submit-btn {
   min-width: 210px;
@@ -196,3 +200,67 @@ ul li {
   font-size: 16px;
   text-align: center;
 }
+
+  /* TABLETĂ (768px - 1280px) */
+  @media (max-width: 1280px) {
+    .submit-btn { 
+    left: -590px;
+      }
+
+      .modal{
+        width: 672px;
+       height: 572px;
+       left: 50%; /* Plasează elementul la 50% de la marginea din stânga */
+       top: 50%;
+  transform: translate(-50%, -50%); /* Mișcă elementul înapoi pentru a-l centra */
+      }
+    }
+
+@media (max-width: 768px) {
+  .form {
+    display: flex;
+    flex-direction: column;
+    height: 269px;
+    margin-top: 74px;
+    width: 240px;
+    gap: 10px;
+    align-content: center;
+    transform: translate(-50%, -50%); 
+    left: 50%;
+    top: 33%; 
+    
+  }  
+  
+  .form label,
+  .form input {
+    width: 240px;
+    margin: 0 auto;
+  }
+
+  .blood-type-options {
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  .submit-btn {
+    left: 30px;
+    top: 40px;
+    width: 210px;
+  }
+
+  .modal {
+    max-width: 768px;
+    width: 100%;
+    height: 597px;
+    min-width: 280px;
+height: 568px;
+background-color: white;
+left: 50%;
+  }
+
+
+  .overlay {
+    display: none;
+  }
+  
+    }

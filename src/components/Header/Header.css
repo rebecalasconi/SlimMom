@@ -5,6 +5,8 @@
     padding-top: 80px;
     padding-left: 16px;
     margin-bottom: 147px;
+    min-width: 1280px;
+    width: 100%;
   }
   
   .header__logo {
@@ -63,3 +65,75 @@
     color: black;
   }
   
+  /* TABLETĂ (768px - 1280px) */
+@media (max-width: 1280px) {
+  .header {
+    min-width: 704x;
+    max-width: 1215px;
+    width: 100%;
+    margin: 20px 0 16px;
+    padding: 0;
+    height: 44px;
+  }
+
+  .header__logo {
+    font-size: 18px;
+  }
+
+  .nav__separator {
+    min-width: 1280px;
+    position: relative;
+    top: 20px;
+    left: -93px;
+    margin-left: 0;
+    margin-right: 0;
+    height: 2px;     
+    z-index: 3;
+    background-color: #E0E0E0;
+  }
+
+  .logo__image {
+    width: 44px;
+    height: 46px;
+  }
+
+  .logo__slim {
+    margin-left: 3px;
+    margin-top: -33px;
+  }
+
+  .logo__mom {
+    margin-top: -33px;
+  }
+
+  .header__nav {
+    padding-top: 20px;
+    padding-left: 0;
+    position: absolute;
+    right: 32px;
+  }
+  
+}
+
+@media (max-width: 768px) {
+  .header {
+    min-width: 320x;
+    max-width: 768px;
+    width: 100%;
+    margin-left: -20px;
+  }
+
+  .header__nav {
+    margin-left: -15px;
+  }
+
+  .logo__image {
+    margin-left: 40px;
+    width: 40px;
+    height: 46px;
+  }
+.logo__mom, 
+.logo__slim{
+  display: none;
+}
+}

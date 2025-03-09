@@ -1,5 +1,5 @@
 import React from 'react';
-
+import "./DiaryProductsListItem.css"
 const DiaryProductsListItem = ({ product, removeProduct }) => {
   return (
     <li className="product-item">

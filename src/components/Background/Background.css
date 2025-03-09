@@ -1,51 +1,126 @@
-/* Stil pentru fundal */
+/* Stil pentru fundal principal */
 .background {
-      z-index: -1;
+  z-index: -1;
+  width: 500px;
+  position: absolute;
+  right: 600px;
 }
 
+
+/* Elementele de fundal */
+.background-leaf,
+.background-banana,
+.background-strawberry,
+.background-gray {
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: relative;
+}
+
+/* DESKTOP (peste 1280px) */
 .background-leaf {
-    background: url('../../assets/images/layer1.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: absolute;
-    top: 0;
-    left: 339px;
-    width: 746px;
-    height: 846px;
+  background-image: url('../../assets/images/layer1.png');
+  top: 0;
+  left: 100px;
+  min-width: 746px;
+  width: 100%;
+  height: 846px;
+}
+
+.background-banana {
+  background-image: url('../../assets/images/layer2.png');
+  top: -880px;
+  left: 500px;
+  min-width: 773px;
+  width: 100%;
+  height: 552px;
+  z-index: -2;
+}
+
+.background-strawberry {
+  background-image: url('../../assets/images/layer3.png');
+  top: -900px;
+  left: 680px; 
+  width: 356px;
+  height: 300px;
+  z-index: -2;
+  background-size: cover;
+}
+
+.background-gray {
+  background-image: url('../../assets/images/layer4.png');
+  top: -1600px;
+  left: 500px; 
+  min-width: 602px;
+  width: 100%;
+  height: 816px;
+  z-index: -3;
+}
+
+/* ECRANE MARI (peste 1600px) */
+/* @media (min-width: 1600px) {
+  .background-leaf {
+    left: 600px;
+    min-width: 800px;
+    height: 900px;
   }
 
   .background-banana {
-    background: url('../../assets/images/layer2.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: absolute;
-    width: 773px;
-    height: 552px;
-    top: 0;
-    left: 670px;
-    z-index: -2;
+    left: 900px;
+    min-width: 850px;
+    height: 600px;
   }
-  
+
   .background-strawberry {
-    background: url('../../assets/images/layer3.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: absolute;
-    width: 286px;
-    height: 279px;
-    top: 506px;
-    left: 944px;
+    top: 500px;
+    left: 1200px;
+    min-width: 350px;
+    height: 300px;
   }
-  
+
   .background-gray {
-    background: url('../../assets/images/layer4.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: absolute;
-    width: 602px;
-    height: 816px;
-    top: 34px;
-    left: 678px;
-    z-index: -3;
+    left: 1000px;
+    min-width: 700px;
+    height: 850px;
   }
+} */
+
+/* TABLETĂ (768px - 1280px) */
+@media (max-width: 1280px) {
+
+  .background-leaf {
+    min-width: 500px;
+    height: 600px;
+    top: 450px;
+    left: 280px;
+    transform: scaleX(-1);
+    transform: rotate(95deg);
+  }
+
+  .background-banana {
+    min-width: 500px;
+    height: 400px;
+    top: 100px;
+    left: 660px;
+  }
+
+  .background-strawberry {
+    top: -500px;
+    right: -100px;
+    transform: scale(0.7);
+    
+  }
+.background-gray {
+  left: 530px;
+  top: -900px;
   
+}
+  }
+ 
+
+/* MOBIL (320px - 768px) */
+@media (max-width: 768px) {
+  .background {
+  display: none;
+}
+}

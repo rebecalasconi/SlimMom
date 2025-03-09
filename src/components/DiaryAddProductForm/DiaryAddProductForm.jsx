@@ -7,7 +7,7 @@ const DiaryAddProductForm = ({
   allForbiddenFoods,
   selectedDate,
   updateCalories,
-  productList,
+  productList = [],
   removeProduct,
 }) => {
   const [grams, setGrams] = useState('');

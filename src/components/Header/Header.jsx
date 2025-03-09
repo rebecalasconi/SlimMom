@@ -1,12 +1,11 @@
-// src/components/Header/Header.jsx
-
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './Header.css';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
 
 const Header = () => {
+  
   const token = localStorage.getItem('token');
   const userName = localStorage.getItem('userName');
   const location = useLocation();
@@ -21,25 +20,12 @@ const Header = () => {
       </div>
       <div className="nav__separator"></div>
       <nav className="header__nav">
-        {token ? (
-          <>
-            <NavLink to="/diary" className={({ isActive }) => isActive ? "nav__link active" : "nav__link"}>
-              DIARY
-            </NavLink>
-            <NavLink to="/calculator" className={({ isActive }) => isActive ? "nav__link active" : "nav__link"}>
-              CALCULATOR
-            </NavLink>
-          </>
-        ) : (
-          <>
-            <NavLink to="/login" className={({ isActive }) => isActive ? "nav__link active" : "nav__link"}>
-              LOG IN
-            </NavLink>
-            <NavLink to="/register" className={({ isActive }) => isActive ? "nav__link active" : "nav__link"}>
-              REGISTRATION
-            </NavLink>
-          </>
-        )}
+        <NavLink to="/login" className={({ isActive }) => isActive ? "nav__link active" : "nav__link"}>
+          LOG IN
+        </NavLink>
+        <NavLink to="/register" className={({ isActive }) => isActive ? "nav__link active" : "nav__link"}>
+          REGISTRATION
+        </NavLink>
       </nav>
     </header>
   );
