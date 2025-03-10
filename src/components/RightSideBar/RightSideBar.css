@@ -1,6 +1,7 @@
 .rightSideBar {
     position: relative;
-    width: 517px;
+    min-width: 517px;
+    width: 100%;
     height: 850px;
     padding: 0 97px;
     box-sizing: border-box;

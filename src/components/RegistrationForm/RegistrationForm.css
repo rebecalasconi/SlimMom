@@ -1,4 +1,21 @@
-.login-title {
+.register-form {
+  min-width: 1280px;
+  width: 100%;
+  height: 850px;
+  position: relative;
+  overflow: hidden;
+}
+
+.register-background {
+  position: relative;
+  top: -400px;
+  height: 850px;
+  min-width: 1280px;
+  width: 100%;
+  z-index: -1;
+}
+
+.register-title {
     color: #FC842D;
     margin: 20px 16px 55px;
     font-family: Verdana;
@@ -72,3 +89,54 @@
     display: flex;
     flex-direction: row;
 }  
+
+    /* TABLETĂ (768px - 1280px) */
+@media (max-width: 1280px) {
+  .register-title {
+    padding-top: 160px;
+    padding-left: 16px;
+
+  }
+
+      .register-form { 
+        min-width: 768px;
+        max-width: 1280px;
+        width: 100%;
+        height: 1024px;
+        overflow: hidden;
+        }
+
+        .register-background {
+          top: -290px;
+          min-width: 768px;
+          height: 1024px;
+        }
+
+        .form-data {
+          margin-top: 5px;
+          margin-bottom: 55px;
+          margin-left: 20px;
+        }
+      }
+
+
+      @media (max-width: 768px) {
+        .register-background {
+          display: none;
+        }
+      
+        .register-form {
+          min-width: 320px;
+          max-width: 768px;
+          width: 100%;
+          height: 648px;
+        }
+
+        .form-data {
+          margin-top: 60px;
+          margin-left: 0;
+        }
+      
+  
+      }
+        

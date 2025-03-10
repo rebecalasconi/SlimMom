@@ -60,14 +60,13 @@ const RegistrationForm = () => {
   
 
   return (
-    <div>
+    <div className="register-form">
         <Header/>
-        <Background/>
-      <h2 className="login-title">REGISTRATION</h2>
       
       {error && <p className="error">{error}</p>}
 
       <form onSubmit={handleSubmit} className="form-data">
+      <h2 className="register-title">REGISTRATION</h2>
         <label>Name*
           <input
             type="text"
@@ -105,6 +104,9 @@ const RegistrationForm = () => {
           </button>
         </div>
       </form>
+      <div className="register-background">
+          <Background />
+        </div>
     </div>
   );
 };

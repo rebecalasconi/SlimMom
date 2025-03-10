@@ -62,7 +62,8 @@ const CalculatorPage = () => {
 
   return (
     <>
-      <Header />
+    <div className='full-container'>
+     <Header />
       <div className="container">
         <div className="leftPanel">
           <h1>Calculate your daily calorie intake right now</h1>
@@ -77,6 +78,7 @@ const CalculatorPage = () => {
             selectedDate={selectedDate}
           />
         </div>
+      </div>
       </div>
     </>
   );

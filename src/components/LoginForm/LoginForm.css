@@ -13,10 +13,11 @@
     height: 850px;
     min-width: 1280px;
     width: 100%;
+    z-index: -1;
   }
 
   .login-title {
-    color: #FC842D;
+    color: hsl(25, 97%, 58%);
     margin: 20px 16px 55px;
     font-family: Verdana;
     font-weight: 700;
@@ -33,6 +34,7 @@
   
  .form-data {
     display: flex;
+    margin-left: 8px;
     flex-direction: row;
     max-width: 240px;
     flex-wrap: wrap;
@@ -97,6 +99,9 @@
 
     /* TABLETĂ (768px - 1280px) */
     @media (max-width: 1280px) {
+      .login-title {
+        padding-left: 32px;
+      }
       .login-container { 
         min-width: 768px;
         max-width: 1280px;
@@ -130,17 +135,26 @@
   }
 
   .buttons {
-    display: flex;
-    align-content: center;
-    flex-direction: row;
-    margin: 0 auto;
     flex-wrap: wrap;
+    gap: 20px;
+    width: 300px;
   }
 
   .login-btn,
   .register-btn {
-    width: 182px;
-    margin: 0 auto;
+
+    top: 50px;
+   
+  }
+
+  .register-btn {
+    left: 16%;
+  }
+
+  .login-btn {
+    margin-left: -16px;
+    width: 200px;
+    left: 11%;
   }
 
   .form-data {
@@ -148,6 +162,7 @@
     max-width: 400px;
     width: 100%;
     left: 50%;
+    align-items: center;
     transform: translate(-50%, -50%); 
     top: 30%;
   }
@@ -155,16 +170,28 @@
   .login-form {
     width: 100%;
     max-width: 768px;
-    height: 700px;
+    height: 568px;
     margin: 0 auto;
   }
 
-  .form-data label , 
-  .form-data input {
+  .form-data label {
      margin: 0 auto;
      min-width: 280px;
      max-width: 400px;
      width: 100%;
+  }
+
+  .form-data input {
+    margin: 0 auto;
+    min-width: 260px;
+    max-width: 400px;
+    width: 100%;
+ }
+
+  .login-title {
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 55px;
   }
 }
   
