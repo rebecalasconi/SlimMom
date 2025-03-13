@@ -60,7 +60,7 @@ const DailyCaloriesForm = ({ initialValues }) => {
   };
 
   useEffect(() => {
-    document.body.classList.toggle('modal-open', modalOpen);
+    document.body.classList.toggle('modal-open-main', modalOpen);
   }, [modalOpen]);
 
   const redirectToLogin = () => {
@@ -69,7 +69,7 @@ const DailyCaloriesForm = ({ initialValues }) => {
 
   return (
     <div>
-      {modalOpen && <div className="overlay" onClick={closeModal}>
+      {modalOpen && <div className="overlay-main" onClick={closeModal}>
     </div>}
 
       <form onSubmit={handleSubmit} className="form">
@@ -135,27 +135,28 @@ const DailyCaloriesForm = ({ initialValues }) => {
                 <span className="blood-type-number">{type}</span>
               </label>
             ))}
+                    <button className="submit-btn" type="submit" >
+          Start losing weight
+        </button>
           </div>
         </div>
 
-        <button className="submit-btn" type="submit" >
-          Start losing weight
-        </button>
+
       </form>
 
       {modalOpen && (
-        <div className="modal" onClick={closeModal}>
+        <div className="modal-main" onClick={closeModal}>
           <button className="close-btn" onClick={closeModal}>&times;</button>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button onClick={closeModal} className="modal-btn">🠔</button>
-            <h3>Your recommended daily calorie intake is</h3>
-            <p><span className='kcal'>{calories}</span> kcal</p>
+          <div className="modal-content-main" onClick={(e) => e.stopPropagation()}>
+            <button onClick={closeModal} className="modal-btn-main">🠔</button>
+            <h3 className='modal-main-title'>Your recommended daily calorie intake is</h3>
+            <p className='kcal-p'><span className='kcal'>{calories}</span> kcal</p>
             <hr />
             <h4>Foods you should not eat</h4>
-            <ul className='modal-list'>
+            <ul className='modal-list-main'>
               {forbiddenFoods.map((food, index) => <li key={index}>{food}</li>)}
             </ul>
-            <button className="start-btn" onClick={redirectToLogin}>
+            <button className="modal-main-start-btn" onClick={redirectToLogin}>
               Start losing weight
             </button>
           </div>

@@ -9,7 +9,9 @@
   overflow: hidden;
 }
 
-
+.modal-btn-main {
+  display: none;
+}
 
 .main {
     width: 608px;
@@ -94,6 +96,10 @@ form {
     margin-top: 120px;
   }
 
+  .main-page .main form {
+    margin-top: 50px;
+  }
+
   .page-container {
     min-width: 768px;
     width: 100%;
@@ -104,6 +110,29 @@ form {
 }
 
 @media (max-width: 768px) {
+  .modal-btn-main {
+    display: block;
+    top: 0;
+
+  }
+  .main-page .header__nav {
+    right: 0;
+  }
+
+  .main-page .logo__image {
+    margin-left: 0;
+  }
+
+  .main-page .header {
+    min-width: 320px;
+    width: 100%;
+    margin-left: 0;
+    overflow: visible;
+  }
+
+  .main-page .header__logo {
+    padding-left: 0;}
+
   .main h1 {
     font-size: 18px;
     min-width: 280px;
@@ -128,6 +157,10 @@ form {
     height: 718px;
     margin: 0;
     margin-right: -30px;
+  }
+
+  .form {
+    margin-top: -100px;
   }
 
 }

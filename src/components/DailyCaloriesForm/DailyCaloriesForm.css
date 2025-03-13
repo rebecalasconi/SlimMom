@@ -77,7 +77,7 @@
 /* DailyCaloriesForm.css */
 /* Modal */
 
-/* Overlay */.overlay {
+/* Overlay */.overlay-main {
   position: fixed;
   top: 50%;  /* Plasează elementul la 50% de la marginea de sus */
   left: 50%; /* Plasează elementul la 50% de la marginea din stânga */
@@ -90,7 +90,7 @@
 }
 
 
-.submit-btn {
+.column .submit-btn {
   min-width: 210px;
   font-size: 14px;
   padding: 13px 25px;
@@ -99,15 +99,15 @@ height: 43px;
 }
 
 /* Când modalul este deschis, overlay devine vizibil */
-.modal-open .overlay {
+.modal-open-main .overlay-main {
   display: block;
 }
 
-.modal-open body {
+.modal-open-main body {
   background:#2121211F;
   /* schimbă fundalul paginii în gri deschis */
 }
-.modal {
+.modal-main {
   position: fixed;
   top: 138px;
   left: 304px;
@@ -145,30 +145,40 @@ height: 43px;
   cursor: pointer;
 }
 
-.modal h3 {
-  margin-top: 44px;
-  max-width: 508px;
-  margin-bottom: 20px;
+.modal-main-title {
+  margin-top: 44px 0 20px;
+  padding-left: 40px;
+  text-align: center;
+  max-width: 410px;
+  font-size: 26px;
+  line-height: 140%;
 }
 
 .kcal {
   font-size: 48px;
+line-height: 100%;
+letter-spacing: 4%;
+
 }
 
-.modal p {
+.kcal-p {
+  margin-top: 20px;
   font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
   margin-bottom: 30px;
 }
 
-.modal hr {
+.modal-main hr {
   border: 0;
   border-top: 1px solid lightgray;
   margin: 12px auto;
   width: 330px;
 }
 
-.modal h4 {
+.modal-main h4 {
   font-size: 14px;
   text-align: left;
   padding-left: 90px;
@@ -193,11 +203,11 @@ ul li {
   margin-bottom: 15px;
 }
 
-.start-btn {
+.modal-main-start-btn {
   background-color: #FC842D;
   position: relative;
   top: 20px;
-  left: 0px;
+  left: 120px;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -210,11 +220,8 @@ ul li {
 
   /* TABLETĂ (768px - 1280px) */
   @media (max-width: 1280px) {
-    .submit-btn { 
-    left: -590px;
-      }
 
-      .modal{
+      .modal-main{
         width: 672px;
        height: 572px;
        left: 50%; /* Plasează elementul la 50% de la marginea din stânga */
@@ -223,13 +230,25 @@ ul li {
       }
     }
 
+    .column .blood-type-options .submit-btn {
+      left: -330px;
+      margin-top: -170px;
+    }
+
 @media (max-width: 768px) {
-  .modal-content h3 {
+  .modal-main-title {
+    padding-left: 0;
+  }
+.modal-main-start-btn {
+  left: 60px;
+}
+
+  .modal-content-main h3 {
     font-size: 18px;
     margin: 0 5px 42px;
   }
 
-  .modal-content h4 {
+  .modal-content-main h4 {
     padding: 35px;
   }
   .form {
@@ -246,11 +265,11 @@ ul li {
     
   } 
   
-  .modal-list  li{
+  .modal-list-main  li{
     padding: 0;
   }
 
-  .modal-list {
+  .modal-list-main {
     max-width: 280px;
     margin: 0 auto;
   }
@@ -266,13 +285,14 @@ ul li {
     gap: 10px;
   }
 
-  .submit-btn {
-    left: 30px;
-    top: 40px;
+  .column .blood-type-options .submit-btn {
+    margin-top: -200px;
+    left: -240px;
+    bottom: 910px;
     width: 210px;
   }
 
-  .modal {
+  .modal-main {
     max-width: 768px;
     width: 100%;
     height: 92%;
@@ -283,7 +303,7 @@ border-top: 2px solid gray;
 z-index: 800;
   }
 
-.overlay {
+.overlay-main {
   /* background-color: #EFF1F3; */
   min-width: 320px;
   max-width: 768px;
@@ -298,7 +318,7 @@ z-index: 800;
     display: none;
   }
 
-  .modal-btn {padding: 0;
+  .modal-btn-main {padding: 0;
     margin-left: 80px;
     position: absolute;
     display: block;
@@ -310,7 +330,7 @@ z-index: 800;
     z-index: 2000;
   }
 
-  .modal-content {
+  .modal-content-main {
     height: 300px;
     margin-top: -380px;
   }

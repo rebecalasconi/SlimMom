@@ -47,11 +47,11 @@
   display: block;
 }
 
-.productForm {
+.container .productForm {
     display: flex;
     flex-direction: row;
     max-height: 100px;
-    margin-top: 90px;
+    margin-top: -200px;
 }
 
 
@@ -121,4 +121,163 @@ height: 38px;
 .gramsInput {
     margin-left: -30px;
     text-align: center;
+    padding-top: 8px;
+    padding-bottom: 20px;
+    margin-top: 14px;
 }
+
+/* TABLETĂ (768px - 1280px) */
+@media (max-width: 1280px) {
+  .container,
+  .container .containerProductForm {
+    min-width: 768px;
+    max-width: 1280px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .container .productForm {
+    margin-top: -250px;
+    width: 510px;
+    transform: translate(-50%, -50%); 
+    left: 50%;
+    top: 40%;
+  }
+
+  .container .productList {
+    min-width: 610px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.container-full .header__nav {
+  display: none;
+}
+}
+
+
+@media (max-width: 768px) {
+
+  .container-full .hamburger {
+    min-width: 24px;
+    min-height: 24px;
+    position: relative;
+    right: 8px;
+  }
+
+  .container-full .header,
+  .container-full .logo__image {
+    margin-left:  0;
+    margin-right: 0;
+  }
+
+  .container-full .userInfoCalc {
+    top: 70px;
+    justify-content: flex-end;
+    padding: 0;
+    height: 40px;
+    min-width: 330px;
+    left: -147px;
+    max-width: 778px;
+    width: 100%;
+  }
+
+
+  .container-full .header,
+  .container-full,
+  .container,
+  .container .containerProductForm,
+  .container .rightSideBar,
+  .container .productForm
+  .container .rightPanel  {
+    min-width: 320px;
+    max-width: 768px;
+    width: 100%;
+  }
+
+  .container .productList {
+  
+    padding-left: 0;
+    margin-top: -200px;
+    min-width: 320px;
+    max-width: 768px;
+    width: 100%;
+    right: 0;
+
+    
+  }
+
+  .container-full .rightSideBar {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    min-width: 320px;
+    width: 100%;
+    padding:0;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  .container .rightSideBar::before {
+    width: 320px;
+    width: 70%;
+    overflow: hidden;
+    padding:0;
+    margin: 0;
+  }
+
+  .container .summary,
+  .container .notRecommendedFoods {
+    margin: 0;
+  }
+.container .containerProductForm,
+.container-full .leftPanel {
+  margin-left: auto;
+  margin-right: auto;
+}
+  /* .container .productList::-webkit-scrollbar{
+    width:30px;
+    margin-left: -400px;
+    left: -300px;
+  } */
+
+  .container .removeButton {
+    margin-left: -20px;
+  }
+
+
+  .container .productRow {
+    padding-left: 0;
+    min-width: 320px;
+    width: 100%;
+  }
+
+  .container .nameColumn,
+  .container .line-1 {
+    min-width: 130px;
+    margin-right: 2px;
+    width: 100%;
+  }
+  .container .gramsColumn,
+  .container .line-2 {
+    min-width: 49px;
+    width: 100%;
+  }
+  .container .kcalColumn,
+  .container .line-3 {
+    min-width: 58px;
+    width: 100%;
+  }
+
+  .container .gramsColumn {
+    margin-top: 20px
+  }
+
+  .container .productForm {
+    display: none;
+  }
+
+
+    }
+  
+  
+  

@@ -7,14 +7,19 @@
       width: 100%;
       position: relative;
   }
+
+  .full-container .submit-btn {
+    margin-left: 20px;
+  }
   
   .leftPanel {
     min-width: 763px;
     width: 100%;
     height: 557px;
+    overflow: hidden;
   }
 
-  .leftPanel h1 {
+  .leftPanel-title {
     max-width: 608px;
     font-family: Verdana;
 font-weight: 700;
@@ -28,15 +33,25 @@ margin-bottom: 68px;
   .rightPanel{
     min-width: 517px;
     width: 100%;
-height: 850px;
 position: relative;
   }
 
-  .leftPanel form {
+
+  .leftPanel .form {
     max-width: 608px;
-    height: 700px;
   }
 
+  .rightPanel .food-list-ul {
+    height: 100px;
+  }
+
+  .full-container {
+    overflow-y: hidden;
+  }
+
+  .rightSideBar {
+    overflow: hidden;
+  }
   
 
     /* TABLETĂ (768px - 1280px) */
@@ -47,7 +62,7 @@ position: relative;
         min-width: 768px;
         max-width: 1280px;
         width: 100%;
-        height: 1024px;
+        height: 870px;
       }
 
       .leftPanel {
@@ -56,7 +71,6 @@ position: relative;
         min-width: 768px;
         max-width: 1280px;
         width: 100%;
-        margin-bottom: 350px;
         margin-top: -120px;
         padding-top: 100px;
         border-top: 1px solid grey;
@@ -67,10 +81,11 @@ position: relative;
       }
 
       .rightPanel {
-        height: 326px;
+        height: 6px;
         min-width: 768px;
         max-width: 1280px;
         width: 100%;
+        margin-top: 0px;
       }
 
       .rightSideBar {
@@ -97,8 +112,7 @@ margin: 0 auto;
 }
 
       .header,
-      .full-container,
-      .form {
+      .full-container {
         min-width: 768px;
         max-width: 1280px;
         width: 100%;
@@ -107,9 +121,26 @@ margin: 0 auto;
       .nav__separator{
         display: none;
       }
-      .form {
-        left: 20px;
+      .leftPanel .form {
+        flex-direction: row;
+        min-width: 704px;
+        width: 100%;
+height: 180px;
+top: 150px;
+
       }
+
+      .full-container .submit-btn {
+        top: 330px;
+        margin-left: -40px;
+      }
+
+      .leftPanel-title {
+        max-width: 704px;
+        width: 100%;
+        min-width: 608px;
+      }
+
       .nav__separator {
         min-width: 768px;
         max-width: 1680px;
@@ -117,14 +148,112 @@ margin: 0 auto;
         width: 100%;
       }
 
+/* Header Navbar - Ascundem doar pe CalculatorPage și pe tablete */
+.header__nav.hide-nav {
+  display: none;
+}
+ 
+
       .userInfo {
         display: none;
-        /* position: relative;
-        top: -600px;
-        background-color: blueviolet;
-        padding: 10px;
-        z-index: 7000; */
       }
+    }
+
+@media (max-width: 768px) {
+  .form {
+    top: 400px;
+    flex-direction: column;
+    width: 240px;
+      }
+
+  .full-container .hamburger {
+    min-width: 24px;
+    min-height: 24px;
+    position: relative;
+    right: 8px;
+  }
+
+  .full-container .header,
+  .full-container .logo__image {
+    margin-left:  0;
+    margin-right: 0;
+  }
+
+
+  .blood-type-options {
+    margin: 0 auto;
+    gap: 10px;
+  }
+
+  .leftPanel-title {
+    font-size: 18px;
+    text-align: center;
+    min-width: 280px;
+    margin: 0 auto;
+    margin-top: -60px;
+  }
+
+  .full-container .form {
+    top: 210px;
+    display: flex;
+    flex-direction: column;
+    min-width: 240px;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .full-container .userInfoCalc {
+    top: 70px;
+    justify-content: flex-end;
+    padding: 0;
+    height: 40px;
+    min-width: 330px;
+    left: -147px;
+    max-width: 778px;
+    width: 100%;
+  }
+
+  .full-container .submit-btn {
+  margin-left: -10px;
+  top: 250px;
+  }
+
+  .full-container .rightSideBar {
+    flex-direction: column;
+    height: 470px;
+    margin-top: -150px;
+    padding-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+
+  }
+
+  .full-container .summary {
+    margin-top: -100px;
+  }
+
+  .leftPanel,
+  .container,
+  .full-container .rightSideBar,
+  .full-container .rightPanel,
+  .full-container .header,
+  .full-container  {
+    min-width: 320px;
+    max-width: 768px;
+    width: 100%;
+  }
+
+  .logo__mom, 
+.logo__slim{
+  display: block;
+}
+
+.leftPanel {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+}
     }
   
   

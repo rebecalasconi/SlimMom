@@ -165,6 +165,7 @@ useEffect(() => {
 
   return (
     <>
+    <div className="container-full">
       <Header />
       <div className="container">
         <div className="leftPanel">
@@ -203,6 +204,7 @@ useEffect(() => {
             selectedDate={selectedDate}
           />
         </div>
+      </div>
       </div>
     </>
   );

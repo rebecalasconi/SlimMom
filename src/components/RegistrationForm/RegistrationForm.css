@@ -136,6 +136,25 @@
           margin-top: 60px;
           margin-left: 0;
         }
+
+        
+  .register-form .header__nav {
+    right: 0;
+  }
+
+  .register-form .logo__image {
+    margin-left: 0;
+  }
+
+  .register-form .header {
+    min-width: 320px;
+    width: 100%;
+    margin-left: 0;
+    overflow: visible;
+  }
+
+  .register-form .header__logo {
+    padding-left: 0;}
       
   
       }

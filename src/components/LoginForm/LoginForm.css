@@ -134,6 +134,24 @@
     margin: 0 auto;
   }
 
+  .login-container .header__nav {
+    right: 0;
+  }
+
+  .login-container .logo__image {
+    margin-left: 0;
+  }
+
+  .login-container .header {
+    min-width: 280px;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .login-container .header__logo {
+    padding-left: 0;
+  }
+
   .buttons {
     flex-wrap: wrap;
     gap: 20px;
@@ -166,6 +184,10 @@
     transform: translate(-50%, -50%); 
     top: 30%;
   }
+
+  /* .header__nav {
+    display: block;
+  } */
 
   .login-form {
     width: 100%;

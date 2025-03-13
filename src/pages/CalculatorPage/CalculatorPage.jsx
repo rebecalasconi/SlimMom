@@ -66,7 +66,7 @@ const CalculatorPage = () => {
      <Header />
       <div className="container">
         <div className="leftPanel">
-          <h1>Calculate your daily calorie intake right now</h1>
+          <h1 className='leftPanel-title'>Calculate your daily calorie intake right now</h1>
           <DailyCaloriesForm initialValues={userData} onDateChange={handleDateChange} />
         </div>
         <div className="rightPanel">
