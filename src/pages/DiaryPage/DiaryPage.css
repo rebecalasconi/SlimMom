@@ -210,20 +210,24 @@ height: 38px;
   .container-full .rightSideBar {
     flex-direction: column;
     flex-wrap: nowrap;
-    min-width: 320px;
-    width: 100%;
-    padding:0;
-    overflow: hidden;
-    margin: 0;
+    margin-right:-100px;
+    width: 280px;
+    margin-left: 0px;
+    padding: 0;
+    left: 0;
   }
 
-  .container .rightSideBar::before {
+  .container .rightPanel {
+    width:280px;
+  }
+
+  /* .container .rightSideBar::before {
     width: 320px;
     width: 70%;
     overflow: hidden;
     padding:0;
     margin: 0;
-  }
+  } */
 
   .container .summary,
   .container .notRecommendedFoods {
@@ -278,6 +282,4 @@ height: 38px;
 
 
     }
-  
-  
   
