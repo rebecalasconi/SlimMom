@@ -1,7 +1,6 @@
 {
   "name": "slimmom",
   "version": "1.0.0",
-  "homepage": ".",
   "main": "index.js",
   "homepage": "https://rebecalasconi.github.io/SlimMom",
   "scripts": {
