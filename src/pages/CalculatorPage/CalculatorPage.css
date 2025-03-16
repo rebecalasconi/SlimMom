@@ -166,6 +166,8 @@ top: 150px;
     width: 240px;
       }
 
+
+
   .full-container .hamburger {
     min-width: 24px;
     min-height: 24px;
@@ -221,16 +223,18 @@ top: 150px;
   .full-container .rightSideBar {
     flex-direction: column;
     height: 470px;
+    gap: 40px;
+    overflow-y: auto;
     margin-top: -150px;
     padding-top: 0;
     margin-left: auto;
     margin-right: auto;
     padding: 0;
-
+    align-items: center;
   }
 
-  .full-container .summary {
-    margin-top: -100px;
+  .full-container .summary-title-h3 {
+    margin-top: 40px;
   }
 
   .leftPanel,

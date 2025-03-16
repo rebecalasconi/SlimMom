@@ -24,8 +24,9 @@
   }
   
   
-  .userInfo {
+  .rightSideBar .userInfo {
     display: flex;
+    justify-content: flex-end;
     padding-top: 130px;
     padding-left: 280px;
     font-family: Verdana;
@@ -39,9 +40,10 @@ font-size: 14px;
     color: #9B9FAA;
   }
   
-  .exitButton {
+  .rightSideBar .exitButton {
     background: none;
     border: none;
+    width: 50px;
     color: #9B9FAA;
     cursor: pointer;
     font-weight: 700;
@@ -120,16 +122,33 @@ letter-spacing: 4%;
     color: #9B9FAA;
     margin-bottom: 5px;
   }
-  
-  @media (max-width: 1280px) {
-  }
+
 
 /* TABLETĂ (768px - 1280px) */
 @media (max-width: 1280px) {
   .userInfo {
-    background-color: red;
     position: absolute;
     top: 0px;
   }
+
+
+  .rightSideBar .exitButton {
+    top: -400px;
+  }
+
+  .rightSideBar::before {
+    background: #F0F1F3;
+  }
   
+}
+
+@media (max-width: 768px) {
+  .summary {
+    width: 280px;
+    align-items: center;
+
+}
+.userInfo {
+  display: none;
+} 
 }

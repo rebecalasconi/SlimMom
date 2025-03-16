@@ -87,7 +87,7 @@
 // export default RightSideBar;
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './RightSideBar.css';
 
 const RightSideBar = ({ dailyRate, allForbiddenFoods, consumed, selectedDate }) => {
@@ -130,7 +130,7 @@ const RightSideBar = ({ dailyRate, allForbiddenFoods, consumed, selectedDate }) 
         </div>
     
         <div className="summary">
-        <h3>Summary for {selectedDate ? formatDate(selectedDate) : 'N/A'}</h3>
+        <h3 className='summary-title-h3'>Summary for {selectedDate ? formatDate(selectedDate) : 'N/A'}</h3>
     
           <div className="summary-item">
             <span className="summary-key">Left </span>
@@ -151,7 +151,7 @@ const RightSideBar = ({ dailyRate, allForbiddenFoods, consumed, selectedDate }) 
         </div>
         
         <div className="notRecommendedFoods">
-          <h4>Food Not Recommended</h4>
+          <h4 className='summary-title-h4'>Food Not Recommended</h4>
           <input
             type="text"
             placeholder="Search product..."

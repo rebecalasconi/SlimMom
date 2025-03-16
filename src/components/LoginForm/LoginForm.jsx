@@ -33,6 +33,7 @@ const LoginForm = ({ setActivePage }) => {
       if (response.status === 200) {
         // Poți salva token-ul dacă e necesar pentru autentificare pe parcursul navigării
         localStorage.setItem('token', response.data.token);
+        console.log('token', response.data.token)
         localStorage.setItem('userName', response.data.user.name)
         navigate('/calculator'); // Redirecționare către pagina de jurnal
       }

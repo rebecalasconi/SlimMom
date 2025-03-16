@@ -1,84 +1,4 @@
-// import React from 'react';
-// import { NavLink } from 'react-router-dom';
-// import './Header.css';
-// import { Link, useLocation } from 'react-router-dom';
-// import logo from '../../assets/images/logo.png';
 
-// const Header = () => {
-  
-//   const token = localStorage.getItem('token');
-//   const userName = localStorage.getItem('userName');
-//   const location = useLocation();
-//   const isProtectedPage = location.pathname === '/diary' || location.pathname === '/calculator';
-
-//   return (
-//     <header className="header">
-//       <div className="header__logo">
-//         <img src={logo} alt="SlimMom logo" className="logo__image" />
-//         <span className="logo__slim">Slim</span>
-//         <span className="logo__mom">Mom</span>
-//       </div>
-//       <div className="nav__separator"></div>
-//       <nav className="header__nav">
-//         <NavLink to="/login" className={({ isActive }) => isActive ? "nav__link active" : "nav__link"}>
-//           LOG IN
-//         </NavLink>
-//         <NavLink to="/register" className={({ isActive }) => isActive ? "nav__link active" : "nav__link"}>
-//           REGISTRATION
-//         </NavLink>
-//       </nav>
-//     </header>
-//   );
-// };
-
-// export default Header;
-
-// import React from 'react';
-// import { NavLink, useLocation } from 'react-router-dom';
-// import './Header.css';
-// import { useMediaQuery } from 'react-responsive'; // Importă useMediaQuery
-// import logo from '../../assets/images/logo.png';
-
-// const Header = () => {
-//   const token = localStorage.getItem('token');
-//   const userName = localStorage.getItem('userName');
-//   const location = useLocation();
-//   const isTabletOrMobile = useMediaQuery({ maxWidth: 1280 }); // Verifică dacă ești pe tabletă sau mobile
-
-//   const isCalculatorPage = location.pathname === '/calculator';
-
-//   return (
-//     <header className="header">
-//       <div className="header__logo">
-//         <img src={logo} alt="SlimMom logo" className="logo__image" />
-//         <span className="logo__slim">Slim</span>
-//         <span className="logo__mom">Mom</span>
-//       </div>
-//       <div className="nav__separator"></div>
-//             {/* Afișează userInfo doar pe CalculatorPage și pe mobile/tablet */}
-//             {isCalculatorPage && isTabletOrMobile && userName && (
-//         <div className="userInfoCalc">
-//           <span className='userInfoName'>{userName}</span>
-//           <span className="separator">|</span>
-//           <button onClick={() => window.location.href = '/'} className="exitButton">Exit</button>
-//         </div>
-//       )}
-//       <nav className="header__nav">
-//         <NavLink to="/login" className={({ isActive }) => isActive ? "nav__link active" : "nav__link"}>
-//           LOG IN
-//         </NavLink>
-//         <NavLink to="/register" className={({ isActive }) => isActive ? "nav__link active" : "nav__link"}>
-//           REGISTRATION
-//         </NavLink>
-
-//       </nav>
-
-
-//     </header>
-//   );
-// };
-
-// export default Header;
 import React, { useState } from 'react';
 import './Header.css';
 import { useLocation, NavLink } from 'react-router-dom';
@@ -137,8 +57,8 @@ const Header = () => {
 
       {/* Modalul */}
       {ModalOpen && (
-        <div className="modal show">
-          <div className="modal-content">
+        <div className="modalHeader showHeader">
+          <div className="modalHeader-content">
           <NavLink to="/diary" className={({ isActive }) => isActive ? 'modal-link selected' : 'modal-link'}>
               DIARY
             </NavLink>
@@ -148,15 +68,42 @@ const Header = () => {
           </div>
         </div>
       )}
- {/* Condiționăm display: none pe header__nav pentru CalculatorPage și tabletă */}
- <nav className={`header__nav ${isCalculatorPage && isTabletOrMobile ? 'hide-nav' : ''}`}>
+ {/* Condiționăm display: none pe header__nav pentru CalculatorPage și DiaryPage pe tabletă și mobil */}
+ <nav className={`header__nav ${(isCalculatorPage || isDiaryPage) && isTabletOrMobile ? 'hide-nav' : ''}`}>
+  <div className="nav-links-container">
+    {/* Afișăm linkurile DIARY și CALCULATOR doar pe /diary și /calculator */}
+    {(isCalculatorPage || isDiaryPage) && (
+      <>
+        {/* Link pentru DIARY */}
+        <NavLink 
+          to="/diary" 
+          className={({ isActive }) => isActive || isDiaryPage ? "nav__link active bold" : "nav__link"}>
+          DIARY
+        </NavLink>
+
+        {/* Link pentru CALCULATOR */}
+        <NavLink 
+          to="/calculator" 
+          className={({ isActive }) => isActive || isCalculatorPage ? "nav__link active bold" : "nav__link"}>
+          CALCULATOR
+        </NavLink>
+      </>
+    )}
+
+    {/* Dacă nu suntem pe /calculator sau /diary, afișăm logarea și înregistrarea */}
+    {!isCalculatorPage && !isDiaryPage && (
+      <>
         <NavLink to="/login" className={({ isActive }) => isActive ? "nav__link active" : "nav__link"}>
           LOG IN
         </NavLink>
         <NavLink to="/register" className={({ isActive }) => isActive ? "nav__link active" : "nav__link"}>
           REGISTRATION
         </NavLink>
-      </nav>
+      </>
+    )}
+  </div>
+</nav>
+
     </header>
   );
 };

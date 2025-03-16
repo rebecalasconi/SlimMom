@@ -174,14 +174,23 @@ height: 38px;
   .container-full .userInfoCalc {
     top: 70px;
     justify-content: flex-end;
-    padding: 0;
+    padding: 0 10px;
+    margin: 0;
     height: 40px;
-    min-width: 330px;
-    left: -147px;
-    max-width: 778px;
-    width: 100%;
+    min-width: 320px;
+    left: -152px;
+    width: 102%;
   }
 
+  .container-full .userInfo {
+    display: none;
+  }
+
+  .container-full .addButton {
+    display: block;
+    z-index: 3000;
+    position: relative;
+  }
 
   .container-full .header,
   .container-full,
@@ -189,7 +198,8 @@ height: 38px;
   .container .containerProductForm,
   .container .rightSideBar,
   .container .productForm
-  .container .rightPanel  {
+  .container .rightPanel,
+  .container-full .leftPanel  {
     min-width: 320px;
     max-width: 768px;
     width: 100%;
@@ -197,46 +207,66 @@ height: 38px;
 
   .container .productList {
   
-    padding-left: 0;
+    padding-left: 32px;
     margin-top: -200px;
     min-width: 320px;
     max-width: 768px;
     width: 100%;
+    height: auto;
     right: 0;
 
     
   }
 
   .container-full .rightSideBar {
-    flex-direction: column;
-    flex-wrap: nowrap;
-    margin-right:-100px;
-    width: 280px;
-    margin-left: 0px;
-    padding: 0;
-    left: 0;
+flex-direction: column;
+height: auto;
+top: -90px;
+overflow-y: auto;
+margin: 0;
+padding-left: 32px;
+min-width: 320px;
+align-items: center;
   }
 
-  .container .rightPanel {
-    width:280px;
+
+  .container-full .summary-title-h3{
+    margin-top: 40px;
   }
 
-  /* .container .rightSideBar::before {
-    width: 320px;
-    width: 70%;
-    overflow: hidden;
-    padding:0;
-    margin: 0;
-  } */
+  .container-full .summary-title-h4{
+    margin-top: 0px;
+  }
+  .container-full .rightSideBar::before {
+    background: none;
+      }
+  .container-full .rightPanel {
+    min-width: 280px;
+    width: 100%;
+    height: auto;
+    top: 70px;
+position: relative;
+  }
 
   .container .summary,
-  .container .notRecommendedFoods {
+  .container .notRecommendedFoods  {
     margin: 0;
+  }
+
+  .container-full .notRecommendedFoods {
+    height: auto; /* Elimină înălțimea fixă */
+    max-height: 50vh; /* Se ajustează în funcție de ecran */
+    overflow-y: auto; /* Activează scroll doar dacă este nevoie */
+    padding-bottom: 10px;
   }
 .container .containerProductForm,
 .container-full .leftPanel {
   margin-left: auto;
   margin-right: auto;
+}
+
+.container-full .leftPanel {
+  margin-bottom: 30px;
 }
   /* .container .productList::-webkit-scrollbar{
     width:30px;
@@ -254,6 +284,11 @@ height: 38px;
     min-width: 320px;
     width: 100%;
   }
+/* 
+  .container-full .exitButton {
+    margin: 0;
+    padding-right: 20px;
+  } */
 
   .container .nameColumn,
   .container .line-1 {
