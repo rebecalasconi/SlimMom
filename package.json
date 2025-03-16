@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "homepage": "https://rebecalasconi.github.io/SlimMom",
-"scripts": {
-  "start": "react-scripts start",
-  "test": "echo \"Error: no test specified\" && exit 1",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d build"
-},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -18,14 +19,17 @@
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^6.4.7",
     "@reduxjs/toolkit": "^2.6.0",
+    "ajv": "^8.17.1",
     "axios": "^1.8.1",
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
+    "debug": "^4.4.0",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
+    "keywords": "^0.1.2",
     "loader": "^2.1.1",
     "mongoose": "^8.11.0",
     "morgan": "^1.10.0",
@@ -37,6 +41,7 @@
     "react-responsive": "^10.0.1",
     "react-router-dom": "^7.2.0",
     "react-scripts": "^5.0.1",
+    "tapable": "^2.2.1",
     "util": "^0.12.5"
   },
   "browserslist": {
