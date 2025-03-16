@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "homepage": "https://rebecalasconi.github.io/SlimMom",
-  "scripts": {
-    "start": "react-scripts start",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+"scripts": {
+  "start": "react-scripts start",
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -53,6 +55,7 @@
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
     "crypto-browserify": "^3.12.1",
+    "gh-pages": "^6.3.0",
     "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
     "querystring-es3": "^0.2.1",
