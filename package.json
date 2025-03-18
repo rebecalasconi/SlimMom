@@ -2,10 +2,6 @@
   "name": "slimmom",
   "version": "1.0.0",
   "main": "index.js",
-<<<<<<< Updated upstream
-=======
-  "homepage": "https://rebecalasconi.github.io/SlimMom",
->>>>>>> Stashed changes
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
