@@ -9,7 +9,7 @@ const Background = () => {
   const isDiaryPage = location.pathname === '/diary';
 
   if (isDiaryPage && isMobile) {
-    return null; // Nu afișează nimic pe DiaryPage pentru mobile
+    return null;
   }
 
   return (

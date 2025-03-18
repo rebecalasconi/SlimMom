@@ -2,7 +2,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import { combineReducers } from '@reduxjs/toolkit';
 
-// Un reducer temporar gol — doar pentru ca store-ul să funcționeze
 const rootReducer = combineReducers({
   placeholder: (state = {}) => state,
 });

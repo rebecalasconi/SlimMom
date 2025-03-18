@@ -1,92 +1,92 @@
 .blood-type-options {
-    display: flex;
-    gap: 20px;
-    width: 240px;
-    flex-wrap: wrap;
-  }
+  display: flex;
+  gap: 20px;
+  width: 240px;
+  flex-wrap: wrap;
+}
 
-  .form {
-    max-width: 608px;
+.form {
+  max-width: 608px;
 }
 
 .modal-btn {
   display: none;
 }
   
-  .blood-type-label {
-    display: flex;
-    flex-wrap: nowrap;
-    margin-left: -10px;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-  }
+.blood-type-label {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-left: -10px;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
   
-  .blood-type-label input {
-    display: none; /* Ascunde radio buttons */
-  }
+.blood-type-label input {
+  display: none;
+}
   
-  .radio-circle {
-    width: 20px;
-    height: 20px;
-    border: 1px solid #848383; /* Gri închis */
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
+.radio-circle {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #848383;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
   
-  .radio-circle::before {
-    content: "";
-    width: 12px;
-    height: 12px;
-    background-color: transparent;
-    border-radius: 50%;
-    transition: background-color 0.3s;
-  }
+.radio-circle::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-color: transparent;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
   
-  .blood-type-label.active .radio-circle::before {
-    background-color: orange; /* Mijlocul cercului portocaliu la selectare */
-  }
+.blood-type-label.active .radio-circle::before {    
+  background-color: orange;
+}
   
-  .blood-type-number {
-    font-size: 14px;
-    font-weight: 300;
-    color: #757373;
-    transition: color 0.3s;
-  }
+.blood-type-number {
+  font-size: 14px;
+  font-weight: 300;
+  color: #757373;
+  transition: color 0.3s;
+}
   
-  .blood-type-label.active .blood-type-number {
-    color: orange;
-  }
+.blood-type-label.active .blood-type-number {
+  color: orange;
+}
 
-  .input-bottom-border {
-    border: none;
-    display: flex;
-    border-bottom: 1px solid #CCC;
-    background: transparent;
-    margin-bottom: 0;
-    margin-top: -25px;
-    width: 300px;
-    font-size: 16px;
-    padding: 5px;
-    color: transparent;
-  }
+.input-bottom-border {
+  border: none;
+  display: flex;
+  border-bottom: 1px solid #CCC;
+  background: transparent;
+  margin-bottom: 0;
+  margin-top: -25px;
+  width: 300px;
+  font-size: 16px;
+  padding: 5px;
+  color: transparent;
+}
   
-/* DailyCaloriesForm.css */
-/* Modal */
 
-/* Overlay */.overlay-main {
+/* Overlay */
+
+.overlay-main {
   position: fixed;
-  top: 50%;  /* Plasează elementul la 50% de la marginea de sus */
-  left: 50%; /* Plasează elementul la 50% de la marginea din stânga */
-  transform: translate(-50%, -50%); /* Mișcă elementul înapoi pentru a-l centra */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-  background: #2121211F; /* gri deschis */
-  z-index: 999; /* asigură-te că este sub modal */
-  display: none; /* ascunsă în mod implicit */
+  background: #2121211F;
+  z-index: 999;
+  display: none;
 }
 
 
@@ -94,18 +94,15 @@
   min-width: 210px;
   font-size: 14px;
   padding: 13px 25px;
-height: 43px;
-
+  height: 43px;
 }
 
-/* Când modalul este deschis, overlay devine vizibil */
 .modal-open-main .overlay-main {
   display: block;
 }
 
 .modal-open-main body {
   background:#2121211F;
-  /* schimbă fundalul paginii în gri deschis */
 }
 .modal-main {
   position: fixed;
@@ -156,9 +153,8 @@ height: 43px;
 
 .kcal {
   font-size: 48px;
-line-height: 100%;
-letter-spacing: 4%;
-
+  line-height: 100%;
+  letter-spacing: 4%;
 }
 
 .kcal-p {
@@ -218,30 +214,30 @@ ul li {
   text-align: center;
 }
 
-  /* TABLETĂ (768px - 1280px) */
-  @media (max-width: 1280px) {
+/* TABLETĂ (768px - 1280px) */
+@media (max-width: 1280px) {
+  .modal-main{
+    width: 672px;
+    height: 572px;
+    left: 50%; /* Plasează elementul la 50% de la marginea din stânga */
+    top: 50%;
+    transform: translate(-50%, -50%); /* Mișcă elementul înapoi pentru a-l centra */
+  }
 
-      .modal-main{
-        width: 672px;
-       height: 572px;
-       left: 50%; /* Plasează elementul la 50% de la marginea din stânga */
-       top: 50%;
-  transform: translate(-50%, -50%); /* Mișcă elementul înapoi pentru a-l centra */
-      }
-    }
-
-    .column .blood-type-options .submit-btn {
-      left: -330px;
-      margin-top: -170px;
-    }
+  .column .blood-type-options .submit-btn {
+    left: -330px;
+    margin-top: -170px;
+  }
+}
 
 @media (max-width: 768px) {
   .modal-main-title {
     padding-left: 0;
   }
-.modal-main-start-btn {
-  left: 60px;
-}
+  
+  .modal-main-start-btn {
+    left: 60px;
+  }
 
   .modal-content-main h3 {
     font-size: 18px;
@@ -251,6 +247,7 @@ ul li {
   .modal-content-main h4 {
     padding: 35px;
   }
+
   .form {
     display: flex;
     flex-direction: column;
@@ -261,8 +258,7 @@ ul li {
     align-content: center;
     transform: translate(-50%, -50%); 
     left: 50%;
-    top: 33%; 
-    
+    top: 33%;  
   } 
   
   .modal-list-main  li{
@@ -297,22 +293,21 @@ ul li {
     width: 100%;
     height: 92%;
     margin-top: 40px;
-background-color: white;
-left: 50%;
-border-top: 2px solid gray;
-z-index: 800;
+    background-color: white;
+    left: 50%;
+    border-top: 2px solid gray;
+    z-index: 800;
   }
 
-.overlay-main {
-  /* background-color: #EFF1F3; */
-  min-width: 320px;
-  max-width: 768px;
-  width: 100%;
-  top: 30.5px;
-  height: 40px;
-  margin-top: 70px;
-  z-index: 999;
-}
+  .overlay-main {
+    min-width: 320px;
+    max-width: 768px;
+    width: 100%;
+    top: 30.5px;
+    height: 40px;
+    margin-top: 70px;
+    z-index: 999;
+  }
 
   .close-btn {
     display: none;
@@ -334,12 +329,5 @@ z-index: 800;
     height: 300px;
     margin-top: -380px;
   }
-  
-    }
+}
 
-    /* @media (max-width: 458px) {
-      .modal-btn {
-        top: -175px;
-        margin-left: 110px;
-      }
-    } */

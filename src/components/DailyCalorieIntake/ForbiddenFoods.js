@@ -8,6 +8,6 @@ const forbiddenFoodSchema = new mongoose.Schema({
   groupBloodNotAllowed: [Boolean],
 });
 
-const ForbiddenFood = mongoose.model('ForbiddenFood', forbiddenFoodSchema, 'SlimMom'); // Specifică numele colecției
+const ForbiddenFood = mongoose.model('ForbiddenFood', forbiddenFoodSchema, 'SlimMom');
 module.exports = ForbiddenFood;
 

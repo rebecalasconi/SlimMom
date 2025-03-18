@@ -6,7 +6,7 @@ import Background from '../components/Background/Background';
 
 const MainPage = () => {
   return (
-    <div className="page-container main-page"> {/* Adăugat main-page pentru stiluri unice */}
+    <div className="page-container main-page">
       <Background />
       <Header />
       <main className="main">
