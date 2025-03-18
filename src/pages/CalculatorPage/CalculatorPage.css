@@ -128,7 +128,7 @@
   }
 
   .full-container .submit-btn {
-    top: 330px;
+    top: 0;
     margin-left: -40px;
   }
 
@@ -209,7 +209,7 @@
 
   .full-container .submit-btn {
     margin-left: -10px;
-    top: 250px;
+    top: 0;
   }
 
   .full-container .rightSideBar {
