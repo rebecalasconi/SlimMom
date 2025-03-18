@@ -6,7 +6,7 @@ import { useMediaQuery } from 'react-responsive';
 import logo from '../../assets/images/logo.png';
 
 const Header = () => {
-  const [ModalOpen, setModalOpen] = useState(false); // Stare pentru modal
+  const [ModalOpen, setModalOpen] = useState(false);
   const token = localStorage.getItem('token');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const userName = localStorage.getItem('userName');
@@ -16,14 +16,12 @@ const Header = () => {
   const isDiaryPage = location.pathname === '/diary';
 
 
-  // Funcție pentru deschiderea și închiderea modalului
   const toggleModal = () => {
     setModalOpen(!ModalOpen);
-    // Dacă modalul este deschis, oprește scroll-ul
     if (!ModalOpen) {
-      document.body.style.overflow = 'hidden'; // Oprește scroll-ul
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'auto'; // Restabilește scroll-ul
+      document.body.style.overflow = 'auto';
     }
   };
 
@@ -45,7 +43,6 @@ const Header = () => {
         </div>
       )}
 
-{/* Hamburger Button - 3 liniuțe sau X */}
 {(isCalculatorPage || isDiaryPage) && isTabletOrMobile && (
   <div className={`hamburger ${ModalOpen ? 'open' : ''}`} onClick={toggleModal}>
     <span></span>
@@ -68,7 +65,6 @@ const Header = () => {
           </div>
         </div>
       )}
- {/* Condiționăm display: none pe header__nav pentru CalculatorPage și DiaryPage pe tabletă și mobil */}
  <nav className={`header__nav ${(isCalculatorPage || isDiaryPage) && isTabletOrMobile ? 'hide-nav' : ''}`}>
   <div className="nav-links-container">
     {/* Afișăm linkurile DIARY și CALCULATOR doar pe /diary și /calculator */}

@@ -16,128 +16,126 @@
 }
 
 .register-title {
-    color: #FC842D;
-    margin: 20px 16px 55px;
-    font-family: Verdana;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 17.01px;
-    letter-spacing: 4%;
-  }
+  color: #FC842D;
+  margin: 20px 16px 55px;
+  font-family: Verdana;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17.01px;
+  letter-spacing: 4%;
+}
   
-  .error {
-    color: red;
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
+.error {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
   
-  .form-data {
-    display: flex;
-    flex-direction: column;
-    max-width: 240px;
-    gap: 20px;
-  }
+.form-data {
+  display: flex;
+  flex-direction: column;
+  max-width: 240px;
+  gap: 20px;
+}
+
+.form-data input {
+  font-weight: 700;
+  font-size: 14px;
+  border: none;
+  width: 240px;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
   
-  .form-data input {
-    font-weight: 700;
-    font-size: 14px;
-    border: none;
-    width: 240px;
-    border-bottom: 1px solid #ccc;
-    padding: 10px 0;
-  }
+.form-data label {
+  font-family: Verdana;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17.01px;
+  letter-spacing: 4%;
+  width: 240px;
+}
   
-  .form-data label {
-    font-family: Verdana;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 17.01px;
-    letter-spacing: 4%;
-    width: 240px;
-  }
+.login-btn {
+  margin-left: 16px;
+  background-color: #FC842D;
+  color: white;
+  border: none;
+}
   
-  .login-btn {
-    margin-left: 16px;
-    background-color: #FC842D;
-    color: white;
-    border: none;
-  }
+.register-btn {
+  background-color: white;
+  color: #FC842D;
+  border: 2px solid #FC842D; 
+}
   
-  .register-btn {
-    background-color: white;
-    color: #FC842D;
-    border: 2px solid #FC842D; 
-  }
+.login-btn, .register-btn {
+  max-width: 181px;
+  max-height: 44px;
+  margin-right: 20px;
+  border-radius: 30px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: Verdana;
+  font-weight: 700;
+  line-height: 17.01px;
+}
   
-  .login-btn, .register-btn {
-    max-width: 181px;
-    max-height: 44px;
-    margin-right: 20px;
-    border-radius: 30px;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 14px;
-    font-family: Verdana;
-    font-weight: 700;
-    line-height: 17.01px;
-  }
-  
-  .login-btn:hover, .register-btn:hover {
-    opacity: 0.8;
-  }
-  .buttons {
-    display: flex;
-    flex-direction: row;
+.login-btn:hover, .register-btn:hover {
+  opacity: 0.8;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
 }  
 
-    /* TABLETĂ (768px - 1280px) */
+/* TABLETĂ (768px - 1280px) */
 @media (max-width: 1280px) {
   .register-title {
     padding-top: 160px;
     padding-left: 16px;
-
   }
 
-      .register-form { 
-        min-width: 768px;
-        max-width: 1280px;
-        width: 100%;
-        height: 1024px;
-        overflow: hidden;
-        }
+  .register-form { 
+    min-width: 768px;
+    max-width: 1280px;
+    width: 100%;
+    height: 1024px;
+    overflow: hidden;
+  }
 
-        .register-background {
-          top: -290px;
-          min-width: 768px;
-          height: 1024px;
-        }
+  .register-background {
+    top: -290px;
+    min-width: 768px;
+    height: 1024px;
+  }
 
-        .form-data {
-          margin-top: 5px;
-          margin-bottom: 55px;
-          margin-left: 20px;
-        }
-      }
+  .form-data {
+    margin-top: 5px;
+    margin-bottom: 55px;
+    margin-left: 20px;
+  }
+}
 
-
-      @media (max-width: 768px) {
-        .register-background {
-          display: none;
-        }
+@media (max-width: 768px) {
+  .register-background {
+    display: none;
+  }
       
-        .register-form {
-          min-width: 320px;
-          max-width: 768px;
-          width: 100%;
-          height: 648px;
-        }
+  .register-form {
+    min-width: 320px;
+    max-width: 768px;
+    width: 100%;
+    height: 648px;
+  }
 
-        .form-data {
-          margin-top: 60px;
-          margin-left: 0;
-        }
-
-        
+  .form-data {
+    margin-top: 60px;
+    margin-left: 0;
+  }
+      
   .register-form .header__nav {
     right: 0;
   }
@@ -154,8 +152,7 @@
   }
 
   .register-form .header__logo {
-    padding-left: 0;}
-      
-  
-      }
+    padding-left: 0;
+  } 
+}
         

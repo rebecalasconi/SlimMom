@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';  // Nu uita să imporți axios
+import axios from 'axios';
 import './LoginForm.css';
 import Background from '../Background/Background';
 import Header from '../Header/Header';
@@ -15,7 +15,7 @@ const LoginForm = ({ setActivePage }) => {
     e.preventDefault();
     setError('');
 
-    // Validări
+
     if (!email.includes('@')) {
       setError('Email-ul trebuie să conțină "@"');
       return;
@@ -26,16 +26,12 @@ const LoginForm = ({ setActivePage }) => {
     }
 
     try {
-      // Trimiterea cererii către backend pentru autentificare
       const response = await axios.post('http://localhost:5000/users/login', { email, password });
 
-      // Dacă autentificarea a reușit
       if (response.status === 200) {
-        // Poți salva token-ul dacă e necesar pentru autentificare pe parcursul navigării
         localStorage.setItem('token', response.data.token);
-        console.log('token', response.data.token)
         localStorage.setItem('userName', response.data.user.name)
-        navigate('/calculator'); // Redirecționare către pagina de jurnal
+        navigate('/calculator');
       }
     } catch (err) {
       const errorMessage = err.response?.data?.message || 'Eroare la autentificare.';

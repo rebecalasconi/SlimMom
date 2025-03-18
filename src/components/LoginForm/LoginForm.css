@@ -73,9 +73,9 @@
     border: 2px solid #FC842D; 
   }
 
-.buttons {
+  .buttons {
     display: inline-block;
-}
+  }
 
  .login-btn, .register-btn {
     top: 70px;
@@ -184,10 +184,6 @@
     transform: translate(-50%, -50%); 
     top: 30%;
   }
-
-  /* .header__nav {
-    display: block;
-  } */
 
   .login-form {
     width: 100%;

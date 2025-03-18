@@ -153,7 +153,6 @@
     font-weight: 700;
   }
 
-/* Stil pentru simbolul cu trei linii */
 .hamburger {
   display: block;
   width: 30px;
@@ -162,7 +161,7 @@
   height: 20px;
   position: relative;
   cursor: pointer;
-  z-index: 1002;  /* Asigurăm că butonul este deasupra */
+  z-index: 1002; 
 }
 
 .hamburger span {
@@ -171,16 +170,15 @@
   height: 4px;
   background-color: #9B9FAA;
   margin: 5px 0;
-  transition: transform 0.3s, opacity 0.3s;  /* Adăugăm tranziție pentru transformare */
+  transition: transform 0.3s, opacity 0.3s; 
 }
 
-/* Transformarea liniuțelor în X */
 .hamburger.open span:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
 }
 
 .hamburger.open span:nth-child(2) {
-  opacity: 0;  /* A doua linie devine invizibilă */
+  opacity: 0;
 }
 
 .hamburger.open span:nth-child(3) {
@@ -192,7 +190,7 @@
   position: fixed;
   width: 100%;
   height: 99.99%;
-  background-color: #264061;  /* Fundalul modalului */
+  background-color: #264061;
   display: none;
   justify-content: center;
   align-items: center;
@@ -200,20 +198,17 @@
   top: 57%;
   
   left: 50%;
-  z-index: 1002;  /* Modalul va fi sub header */
+  z-index: 1002;
 }
 
-/* Modalul devine vizibil când are clasa 'show' */
 .modalHeader.showHeader {
   display: flex;
 }
 
-/* Contenutul modalului */
 .modalHeader-content {
  margin-top: -600px;
 }
 
-/* Link-uri din modal */
 .modal-link {
   font-size: 24px;
   display: block;

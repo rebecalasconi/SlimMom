@@ -24,7 +24,7 @@ const CalculatorPage = () => {
   const handleDateChange = (date) => {
     setSelectedDate(date);
     localStorage.setItem('selectedDate', date);
-    loadDataForDate(date); // Actualizăm datele consumate pentru data nouă
+    loadDataForDate(date);
   };
 
   const getUserKey = (key) => {
@@ -41,7 +41,6 @@ const CalculatorPage = () => {
   };
 
   useEffect(() => {
-    // Date generale
     const storedData = JSON.parse(localStorage.getItem('caloriesData'));
     const storedFormData = JSON.parse(localStorage.getItem('calorieFormData'));
     const storedSelectedDate = localStorage.getItem('selectedDate') || new Date().toISOString().split('T')[0];

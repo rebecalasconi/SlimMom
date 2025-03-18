@@ -48,12 +48,11 @@
 }
 
 .container .productForm {
-    display: flex;
-    flex-direction: row;
-    max-height: 100px;
-    margin-top: -200px;
+  display: flex;
+  flex-direction: row;
+  max-height: 100px;
+  margin-top: -200px;
 }
-
 
 .selectedDate {
   font-size: 1.2rem;
@@ -91,39 +90,37 @@
 }
 
 .calendarLabel:hover {
-  color: #ff7f50; /* portocaliu */
+  color: #ff7f50;
 }
 
-
 .addButton {
-    top: 15px;
-    border-radius: 100px;
-    font-size: 20px;
-    font-weight: 400;
-    width: 48px;
-    height: 48px;
-    box-shadow: 0px 4px 10px 0px #FC842D80;
-    left: 10px;
+  top: 15px;
+  border-radius: 100px;
+  font-size: 20px;
+  font-weight: 400;
+  width: 48px;
+  height: 48px;
+  box-shadow: 0px 4px 10px 0px #FC842D80;
+  left: 10px;
 }
 
 .selectedDate {
-    font-family: Verdana;
-font-weight: 700;
-font-size: 34px;
-line-height: 41.32px;
-margin-left: 16px;
-margin-bottom: 60px;
-width: 235px;
-height: 38px;
-
+  font-family: Verdana;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 41.32px;
+  margin-left: 16px;
+  margin-bottom: 60px;
+  width: 235px;
+  height: 38px;
 }
 
 .gramsInput {
-    margin-left: -30px;
-    text-align: center;
-    padding-top: 8px;
-    padding-bottom: 20px;
-    margin-top: 14px;
+  margin-left: -30px;
+  text-align: center;
+  padding-top: 8px;
+  padding-bottom: 20px;
+  margin-top: 14px;
 }
 
 /* TABLETĂ (768px - 1280px) */
@@ -136,6 +133,7 @@ height: 38px;
     margin-left: auto;
     margin-right: auto;
   }
+
   .container .productForm {
     margin-top: -250px;
     width: 510px;
@@ -150,14 +148,13 @@ height: 38px;
     margin-left: auto;
     margin-right: auto;
 }
-.container-full .header__nav {
-  display: none;
-}
-}
 
+  .container-full .header__nav {
+    display: none;
+  }
+}
 
 @media (max-width: 768px) {
-
   .container-full .hamburger {
     min-width: 24px;
     min-height: 24px;
@@ -206,27 +203,24 @@ height: 38px;
   }
 
   .container .productList {
-  
     padding-left: 32px;
     margin-top: -200px;
     min-width: 320px;
     max-width: 768px;
     width: 100%;
     height: auto;
-    right: 0;
-
-    
+    right: 0; 
   }
 
   .container-full .rightSideBar {
-flex-direction: column;
-height: auto;
-top: -90px;
-overflow-y: auto;
-margin: 0;
-padding-left: 32px;
-min-width: 320px;
-align-items: center;
+    flex-direction: column;
+    height: auto;
+    top: -90px;
+    overflow-y: auto;
+    margin: 0;
+    padding-left: 32px;
+    min-width: 320px;
+    align-items: center;
   }
 
 
@@ -237,15 +231,17 @@ align-items: center;
   .container-full .summary-title-h4{
     margin-top: 0px;
   }
+
   .container-full .rightSideBar::before {
     background: none;
       }
+
   .container-full .rightPanel {
     min-width: 280px;
     width: 100%;
     height: auto;
     top: 70px;
-position: relative;
+    position: relative;
   }
 
   .container .summary,
@@ -259,36 +255,26 @@ position: relative;
     overflow-y: auto; /* Activează scroll doar dacă este nevoie */
     padding-bottom: 10px;
   }
-.container .containerProductForm,
-.container-full .leftPanel {
-  margin-left: auto;
-  margin-right: auto;
+
+  .container .containerProductForm,
+  .container-full .leftPanel {
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.container-full .leftPanel {
-  margin-bottom: 30px;
-}
-  /* .container .productList::-webkit-scrollbar{
-    width:30px;
-    margin-left: -400px;
-    left: -300px;
-  } */
+  .container-full .leftPanel {
+    margin-bottom: 30px;
+  }
 
   .container .removeButton {
     margin-left: -20px;
   }
-
 
   .container .productRow {
     padding-left: 0;
     min-width: 320px;
     width: 100%;
   }
-/* 
-  .container-full .exitButton {
-    margin: 0;
-    padding-right: 20px;
-  } */
 
   .container .nameColumn,
   .container .line-1 {
@@ -296,11 +282,13 @@ position: relative;
     margin-right: 2px;
     width: 100%;
   }
+
   .container .gramsColumn,
   .container .line-2 {
     min-width: 49px;
     width: 100%;
   }
+
   .container .kcalColumn,
   .container .line-3 {
     min-width: 58px;
@@ -314,7 +302,5 @@ position: relative;
   .container .productForm {
     display: none;
   }
-
-
-    }
+}
   

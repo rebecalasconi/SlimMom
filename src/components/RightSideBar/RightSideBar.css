@@ -1,127 +1,124 @@
 .rightSideBar {
-    position: relative;
-    min-width: 517px;
-    width: 100%;
-    height: 850px;
-    padding: 0 97px;
-    box-sizing: border-box;
-    background: linear-gradient(to bottom, #F0F1F3, #F0F1F3); /* fundal gri */
-    overflow: hidden; /* ascunde partea din imagine care depășește */
-    top: -305px; 
-  }
+  position: relative;
+  min-width: 517px;
+  width: 100%;
+  height: 850px;
+  padding: 0 97px;
+  box-sizing: border-box;
+  background: linear-gradient(to bottom, #F0F1F3, #F0F1F3);
+  overflow: hidden;
+  top: -305px; 
+}
   
-  .rightSideBar::before {
-    content: "";
-    position: absolute;
-    top: -190px; 
-    left: -80px; /* mută imaginea spre stânga */
-    width: 170%; /* mărește imaginea */
-    height: 170%;
-    background: url('../../assets/images/layer1.png') no-repeat center center;
-    background-size: contain; 
-    z-index: 1; /* imaginea peste fundal, dar sub conținut */
-    pointer-events: none; /* nu afectează clickurile */
-  }
+.rightSideBar::before {
+  content: "";
+  position: absolute;
+  top: -190px; 
+  left: -80px; /* mută imaginea spre stânga */
+  width: 170%; /* mărește imaginea */
+  height: 170%;
+  background: url('../../assets/images/layer1.png') no-repeat center center;
+  background-size: contain; 
+  z-index: 1; /* imaginea peste fundal, dar sub conținut */
+  pointer-events: none; /* nu afectează clickurile */
+}
+    
+.rightSideBar .userInfo {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 130px;
+  padding-left: 280px;
+  font-family: Verdana;
+  font-weight: 700;
+  font-size: 14px;
+}
   
+.separator {
+  margin: 0 10px;
+  color: #9B9FAA;
+}
   
-  .rightSideBar .userInfo {
-    display: flex;
-    justify-content: flex-end;
-    padding-top: 130px;
-    padding-left: 280px;
-    font-family: Verdana;
-font-weight: 700;
-font-size: 14px;
-  }
+.rightSideBar .exitButton {
+  background: none;
+  border: none;
+  width: 50px;
+  color: #9B9FAA;
+  cursor: pointer;
+  font-weight: 700;
+  top: -10px;
+  left: 0px;
+}
+  
+.exitButton:hover {
+  text-decoration: underline;
+}
+  
+.summary h3 {
+  margin-bottom: 20px;
+  margin-top: 149px;
+}
+  
+.summary-item {
+  font-family: Verdana, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17.01px;
+  letter-spacing: 4%;
+  color: #9B9FAA;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+  
+.dateCompleted {
+  font-family: Verdana, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17.01px;
+  letter-spacing: 4%;
+  margin-bottom: 20px;
+  text-align: center;
+}
+  
+.notRecommendedFoods h4{
+  margin-bottom: 20px;
+  margin-top: 60px;
+  font-weight: 700;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
+.searchInput {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
   
-  .separator {
-    margin: 0 10px;
-    color: #9B9FAA;
-  }
+.food-list {
+  max-height: 100px;
+  max-width: 288px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17.01px;
+  letter-spacing: 4%;
+  overflow-y: auto;
+  margin-top: 20px;
+}
   
-  .rightSideBar .exitButton {
-    background: none;
-    border: none;
-    width: 50px;
-    color: #9B9FAA;
-    cursor: pointer;
-    font-weight: 700;
-    top: -10px;
-    left: 0px;
-  }
-  
-  .exitButton:hover {
-    text-decoration: underline;
-  }
-  
-  .summary h3 {
-    margin-bottom: 20px;
-    margin-top: 149px;
-  }
-  
-  .summary-item {
-    font-family: Verdana, sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17.01px;
-    letter-spacing: 4%;
-    color: #9B9FAA;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  .dateCompleted {
-    font-family: Verdana, sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 17.01px;
-    letter-spacing: 4%;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .notRecommendedFoods h4{
-    margin-bottom: 20px;
-    margin-top: 60px;
-    font-weight: 700;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-  }
-
-
-  .searchInput {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
-    box-sizing: border-box;
-  }
-  
-  .food-list {
-    max-height: 100px;
-    max-width: 288px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-line-height: 17.01px;
-letter-spacing: 4%;
-    overflow-y: auto;
-    margin-top: 20px;
-  }
-  
-  .food-item {
-    font-family: Verdana, sans-serif;
-    padding: 0;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17.01px;
-    letter-spacing: 4%;
-    color: #9B9FAA;
-    margin-bottom: 5px;
-  }
+.food-item {
+  font-family: Verdana, sans-serif;
+  padding: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17.01px;
+  letter-spacing: 4%;
+  color: #9B9FAA;
+  margin-bottom: 5px;
+}
 
 
 /* TABLETĂ (768px - 1280px) */
@@ -131,24 +128,22 @@ letter-spacing: 4%;
     top: 0px;
   }
 
-
   .rightSideBar .exitButton {
     top: -400px;
   }
 
   .rightSideBar::before {
     background: #F0F1F3;
-  }
-  
+  }  
 }
 
 @media (max-width: 768px) {
   .summary {
     width: 280px;
     align-items: center;
+  }
 
-}
-.userInfo {
-  display: none;
-} 
+  .userInfo {
+    display: none;
+  } 
 }
