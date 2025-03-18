@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/SlimMom/static/css/main.9ced6f73.css",
-    "main.js": "/SlimMom/static/js/main.af448fa0.js",
-    "static/media/layer3.png": "/SlimMom/static/media/layer3.995d7ecf47f7ef9cfb5f.png",
-    "static/media/layer2.png": "/SlimMom/static/media/layer2.336406cb55410230740f.png",
-    "static/media/layer1.png": "/SlimMom/static/media/layer1.a433305e0d69b76cba43.png",
-    "index.html": "/SlimMom/index.html",
-    "main.9ced6f73.css.map": "/SlimMom/static/css/main.9ced6f73.css.map",
-    "main.af448fa0.js.map": "/SlimMom/static/js/main.af448fa0.js.map"
+    "main.css": "/static/css/main.6a7c9b1a.css",
+    "main.js": "/static/js/main.af162c1b.js",
+    "static/media/layer3.png": "/static/media/layer3.995d7ecf47f7ef9cfb5f.png",
+    "static/media/layer2.png": "/static/media/layer2.336406cb55410230740f.png",
+    "static/media/layer1.png": "/static/media/layer1.a433305e0d69b76cba43.png",
+    "index.html": "/index.html",
+    "main.6a7c9b1a.css.map": "/static/css/main.6a7c9b1a.css.map",
+    "main.af162c1b.js.map": "/static/js/main.af162c1b.js.map"
   },
   "entrypoints": [
-    "static/css/main.9ced6f73.css",
-    "static/js/main.af448fa0.js"
+    "static/css/main.6a7c9b1a.css",
+    "static/js/main.af162c1b.js"
   ]
 }
