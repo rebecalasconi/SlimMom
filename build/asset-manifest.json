@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/SlimMom/static/css/main.9ced6f73.css",
+    "main.js": "/SlimMom/static/js/main.af448fa0.js",
+    "static/media/layer3.png": "/SlimMom/static/media/layer3.995d7ecf47f7ef9cfb5f.png",
+    "static/media/layer2.png": "/SlimMom/static/media/layer2.336406cb55410230740f.png",
+    "static/media/layer1.png": "/SlimMom/static/media/layer1.a433305e0d69b76cba43.png",
+    "index.html": "/SlimMom/index.html",
+    "main.9ced6f73.css.map": "/SlimMom/static/css/main.9ced6f73.css.map",
+    "main.af448fa0.js.map": "/SlimMom/static/js/main.af448fa0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9ced6f73.css",
+    "static/js/main.af448fa0.js"
+  ]
+}
